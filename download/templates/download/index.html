@@ -2,21 +2,31 @@
 {% load staticfiles %}
 
 {% block content %}
-<h1>data.justice</h1>
+<header class="page-header group">
+  <div>
+    <h1>Download the data</h1>
+  </div>
+</header>
+
+<p>The goal of this platform is to improve how the we provide data. We want to respond to the needs of the users of our data. In order to do so, we would like to know about the people who download this dataset.</p>
+
+<p>Once we've identified who downloaders are, we can work with them in order to gather your needs: what data is useful to you, in what form you would like to have it, etc.</p>
+
 <form action="{% url 'download:go' %}" method="post">
   {% csrf_token %}
   <div>
-    <label for="name">Your name</label>
+    <label for="name">Your name</label><br/>
     <input type="text" name="name"/>
   </div>
   <div>
-    <label for="email">Your email address</label>
+    <label for="email">Your email address</label><br/>
     <input type="email" name="email"/>
   </div>
   <div>
-    <label for="comment">Comments:</label>
+    <label for="comment">Why are you downloading this dataset?</label><br/>
     <textarea name="comment" rows="4" cols="50"></textarea>
   </div>
   <input type="submit" value="continue"/>
+
 </form>
 {% endblock %}
