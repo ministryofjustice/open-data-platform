@@ -25,6 +25,11 @@ DEBUG = True
 
 TEMPLATE_DEBUG = True
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    'django.contrib.auth.context_processors.auth',
+    'download.context_processors.globals'
+)
+
 ALLOWED_HOSTS = []
 
 
@@ -38,7 +43,8 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'south',
-    'download'
+    'download',
+    'moj_template'
 )
 
 MIDDLEWARE_CLASSES = (

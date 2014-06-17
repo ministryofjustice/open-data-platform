@@ -1,19 +1,23 @@
+{% extends 'moj_template/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
 <h1>data.justice</h1>
+    <form action="{% url 'download:go' %}" method="post">
+      {% csrf_token %}
+      <div>
+        <label for="name">Your name</label>
+        <input type="text" name="name"/>
+      </div>
+      <div>
+        <label for="email">Your email address</label>
+        <input type="email" name="email"/>
+      </div>
+      <div>
+        <label for="comment">Comments:</label>
+        <textarea name="comment" rows="4" cols="50"></textarea>
+      </div>
+      <input type="submit" value="continue"/>
+    </form>
 
-<form action="{% url 'download:go' %}" method="post">
-  {% csrf_token %}
-  <div>
-    <label for="name">Your name</label>
-    <input type="text" name="name"/>
-  </div>
-  <div>
-    <label for="email">Your email address</label>
-    <input type="email" name="email"/>
-  </div>
-  <div>
-    <label for="comment">Comments:</label>
-    <textarea name="comment" rows="4" cols="50"></textarea>
-  </div>
-  <input type="submit" value="continue"/>
-</form>
-
+{% endblock %}
