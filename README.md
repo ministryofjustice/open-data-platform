@@ -31,3 +31,11 @@ Running locally
 - run the application
 
     `python manage.py runserver`
+
+
+Running on heroku
+-----------------
+
+Follow the [instructions](https://devcenter.heroku.com/articles/getting-started-with-django) on the heroku site. Before the `heroku ps:scale web=1` command, type:
+
+    `heroku config:set DJANGO_SETTINGS_MODULE=data_justice.settings`
