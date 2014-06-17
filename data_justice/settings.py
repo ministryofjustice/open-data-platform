@@ -46,6 +46,8 @@ INSTALLED_APPS = (
     'moj_template',
     'download',
     'home',
+    'api',
+    'apps',
 )
 
 MIDDLEWARE_CLASSES = (
