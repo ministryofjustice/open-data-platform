@@ -1,0 +1,21 @@
+{% extends 'moj_template/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+
+<header class="page-header group">
+  <div>
+    <h1>Proceedings by month</h1>
+  </div>
+</header>
+
+
+<p>This is a very simple barchart showing the number of cases processed by month between 2002 and 2012.</p>
+
+<div id="demo1"></div>
+<script src="{% static 'd3.v3.min.js' %}"></script>
+<script src="{% static 'demo1.js' %}"></script>
+
+{% endblock %}
+
+
