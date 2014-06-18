@@ -1,17 +1,53 @@
 var d3;
 
-var proceedings_by_month = [160432,141685,145216,147375,161235,129610,159150,142578,147739,162938,154144,122963,164306,145938,158172,154769,150294,156096,167402,146107,163962,174461,153742,137227,167236,158482,179038,155728,147349,159180,158226,145726,156418,150234,159601,126510,150061,142525,147927,155110,141900,154500,144062,144944,151226,145029,152495,118281,148861,138346,157935,125036,140509,140918,133083,137640,137745,143670,145290,106952,142115,130248,145635,129132,137033,137612,140771,138155,130503,142857,140774,106755,150301,135732,128107,139412,125644,136017,140849,119558,136519,141256,126165,126443,144399,132988,151927,143991,129390,148668,154350,134157,149079,145742,143159,123862];
+function type(d) {
+  d.count = +d.count; // coerce to number
+  return d;
+}
 
+var margin = {top: 20, right: 30, bottom: 30, left: 50},
+    width = 960 - margin.left - margin.right,
+    height = 500 - margin.top - margin.bottom;
 
-d3
-  .select("#demo1")
-  .selectAll("div")
-  .data(proceedings_by_month)
-  .enter().append("div")
-  .style("width", function(d) { return d / 500 + "px"; })
-  .style("background-color", "steelblue")
-  .style("text-align", "right")
-  .style("color", "white")
-  .text(function(d) { return d; });
+var x = d3.scale.ordinal()
+    .rangeRoundBands([0, width], .1);
 
-console.log(d3.select("#demo1"));
+var y = d3.scale.linear()
+    .range([height, 0]);
+
+var xAxis = d3.svg.axis()
+    .scale(x)
+    .orient("bottom");
+
+var yAxis = d3.svg.axis()
+    .scale(y)
+    .orient("left");
+
+var chart = d3.select("#demo1")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+d3.csv("/static/proceedings-by-month.csv", type, function(error, data) {
+  x.domain(data.map(function(d) { return d.year+d.month; }));
+  y.domain([0, d3.max(data, function(d) { return d.count; })]);
+
+  chart.append("g")
+      .attr("class", "x axis")
+      .attr("transform", "translate(0," + height + ")")
+      .call(xAxis);
+
+  chart.append("g")
+      .attr("class", "y axis")
+      .call(yAxis);
+
+  chart.selectAll(".bar")
+      .data(data)
+    .enter().append("rect")
+      .attr("class", "bar")
+      .attr("x", function(d) { return x(d.year+d.month); })
+      .attr("y", function(d) { return y(d.count); })
+      .attr("height", function(d) { return height - y(d.count); })
+      .attr("width", x.rangeBand());
+});

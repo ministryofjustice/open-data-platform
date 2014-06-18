@@ -12,7 +12,29 @@
 
 <p>This is a very simple barchart showing the number of cases processed by month between 2002 and 2012.</p>
 
-<div id="demo1"></div>
+<style>
+
+.bar {
+  fill: steelblue;
+}
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+</style>
+<svg id="demo1"></svg>
 <script src="{% static 'd3.v3.min.js' %}"></script>
 <script src="{% static 'demo1.js' %}"></script>
 
