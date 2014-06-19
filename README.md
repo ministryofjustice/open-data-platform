@@ -12,19 +12,21 @@ Running locally
 - run:
 
     `cd open-data-platform`
-    
+
     `pip -r requirements.txt`
 
 - create a postgresql database
 - set the following environment variables:
 
     `export DATABASE_URL=postgres://dbuser:dbpassword@localhost:port/dbname`
+    `export MOJOD_DEBUG=True`
+    `export MOJOD_TEMPLATE_DEBUG=True`
 
 If you want to set a password:
 
-    `export BASIC_WWW_AUTHENTICATION_USERNAME="user"`
-    `export BASIC_WWW_AUTHENTICATION_PASSWORD="password"`
-    `export BASIC_WWW_AUTHENTICATION=True`
+    `export MOJOD_BASIC_WWW_AUTHENTICATION_USERNAME="user"`
+    `export MOJOD_BASIC_WWW_AUTHENTICATION_PASSWORD="password"`
+    `export MOJOD_BASIC_WWW_AUTHENTICATION=True`
 
 
 - initalise the application:
@@ -49,4 +51,4 @@ Follow the [instructions](https://devcenter.heroku.com/articles/getting-started-
 
 if you want to set a password:
 
-    `heroku config:set BASIC_WWW_AUTHENTICATION_USERNAME="user" BASIC_WWW_AUTHENTICATION_PASSWORD="password" BASIC_WWW_AUTHENTICATION=True`
+    `heroku config:set MOJOD_BASIC_WWW_AUTHENTICATION_USERNAME="user" MOJOD_BASIC_WWW_AUTHENTICATION_PASSWORD="password" MOJOD_BASIC_WWW_AUTHENTICATION=True`

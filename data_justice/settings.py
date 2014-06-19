@@ -12,18 +12,16 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
-IS_HEROKU = bool(os.environ.get('IS_HEROKU', False))
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.6/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'r@wj%c1i$mfl+p^l*gn*f)8)0l&$9&@2x8$glo7hice3@7$@uw'
+SECRET_KEY = os.environ.get('MOJOD_SECRET_KEY', '')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(os.environ.get('MOJOD_DEBUG', False))
 
-TEMPLATE_DEBUG = True
+TEMPLATE_DEBUG = bool(os.environ.get('MOJOD_TEMPLATE_DEBUG', False))
 
 TEMPLATE_CONTEXT_PROCESSORS = (
     'django.contrib.auth.context_processors.auth',
@@ -102,6 +100,6 @@ STATICFILES_DIRS = [ os.path.join(BASE_DIR, "static") ]
 #    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #)
 
-BASIC_WWW_AUTHENTICATION_USERNAME = os.environ.get('BASIC_WWW_AUTHENTICATION_USERNAME')
-BASIC_WWW_AUTHENTICATION_PASSWORD = os.environ.get('BASIC_WWW_AUTHENTICATION_PASSWORD')
-BASIC_WWW_AUTHENTICATION = bool(os.environ.get('BASIC_WWW_AUTHENTICATION', False))
+BASIC_WWW_AUTHENTICATION_USERNAME = os.environ.get('MOJOD_BASIC_WWW_AUTHENTICATION_USERNAME')
+BASIC_WWW_AUTHENTICATION_PASSWORD = os.environ.get('MOJOD_BASIC_WWW_AUTHENTICATION_PASSWORD')
+BASIC_WWW_AUTHENTICATION = bool(os.environ.get('MOJOD_BASIC_WWW_AUTHENTICATION', False))
