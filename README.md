@@ -45,11 +45,8 @@ Running on heroku
 
 Follow the [instructions](https://devcenter.heroku.com/articles/getting-started-with-django) on the heroku site. Before the `heroku ps:scale web=1` command, type:
 
-    `heroku config:set DJANGO_SETTINGS_MODULE=data_justice.settings`
-    `heroku config:set DATABASE_URL=postgres://dbuser:dbpassword@localhost:port/dbname`
+    `heroku config:set DJANGO_SETTINGS_MODULE=data_justice.settings DATABASE_URL=postgres://dbuser:dbpassword@localhost:port/dbname`
 
 if you want to set a password:
 
-    `heroku config:set BASIC_WWW_AUTHENTICATION_USERNAME="user"`
-    `heroku config:set BASIC_WWW_AUTHENTICATION_PASSWORD="password"`
-    `heroku config:set BASIC_WWW_AUTHENTICATION=True`
+    `heroku config:set BASIC_WWW_AUTHENTICATION_USERNAME="user" BASIC_WWW_AUTHENTICATION_PASSWORD="password" BASIC_WWW_AUTHENTICATION=True`
