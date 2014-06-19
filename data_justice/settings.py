@@ -57,6 +57,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'auth.BasicAuthenticationMiddleware',
 )
 
 ROOT_URLCONF = 'data_justice.urls'
@@ -100,3 +101,11 @@ STATICFILES_DIRS = [ os.path.join(BASE_DIR, "static") ]
 #    'django.contrib.staticfiles.finders.FileSystemFinder',
 #    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
 #)
+
+BASIC_WWW_AUTHENTICATION_USERNAME = os.environ.get('BASIC_WWW_AUTHENTICATION_USERNAME')
+BASIC_WWW_AUTHENTICATION_PASSWORD = os.environ.get('BASIC_WWW_AUTHENTICATION_PASSWORD')
+BASIC_WWW_AUTHENTICATION = bool(os.environ.get('BASIC_WWW_AUTHENTICATION', False))
+
+print BASIC_WWW_AUTHENTICATION
+print BASIC_WWW_AUTHENTICATION_USERNAME
+print BASIC_WWW_AUTHENTICATION_PASSWORD
