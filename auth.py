@@ -23,7 +23,7 @@ def basic_authenticate(authentication):
     AUTHENTICATION_PASSWORD = getattr(settings, 'BASIC_WWW_AUTHENTICATION_PASSWORD')
     return username == AUTHENTICATION_USERNAME and password == AUTHENTICATION_PASSWORD
 
-class BasicAuthenticationMiddleware(_.object):
+class BasicAuthenticationMiddleware(object):
     def process_request(self, request):
         if not getattr(settings, 'BASIC_WWW_AUTHENTICATION', False):
             return
