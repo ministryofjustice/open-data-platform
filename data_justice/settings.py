@@ -28,7 +28,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
     'download.context_processors.globals'
 )
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ.get('MOJOD_ALLOWED_HOST', '')]
 
 
 # Application definition
