@@ -1,0 +1,81 @@
+{% extends 'moj_template/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="content inner cf">
+
+<header class="page-header group">
+  <div>
+    <h1>The court proceedings dataset</h1>
+  </div>
+</header>
+
+<p>This page describes the Court Proceedings Datasets. The set consists of 10 <a href="http://en.wikipedia.org/wiki/Comma-separated_values">CSV</a> files, with each line providing information about a magistrates court proceeding, or a crown court trial. Only cases with adult offenders are included.</p>
+
+<h2>Caveats</h2>
+
+<p><strong>MOJ provides no guarantee as to the accuracy and the completeness of the data provided.</strong></p>
+
+<h2>License and Copyright</h2>
+
+<p>The data is distributed under <a href="http://www.nationalarchives.gov.uk/information-management/our-services/crown-copyright.htm">Crown Copyright</a> and licensed under the <a href="http://www.nationalarchives.gov.uk/doc/open-government-licence/version/2/">Open Government Licence</a>.</p>
+
+<h2>Contents of the Zip file</h2>
+
+<ul>
+  <li>Green Book (General codes) 2014.xls</li>
+  <li>Orange Compendium (A to Z Acts and sections codes) 2014.xls</li>
+  <li>hack02.csv</li>
+  <li>hack03.csv</li>
+  <li>...csv</li>
+</ul>
+
+<p>The CSV files are the data itself, described below, and the XLS provide table for decoding the indexes in the file.</p>
+
+<h2>The CSV files</h2>
+
+<p>Each line in the files describes a court proceedings, as illustrated in this picture:</p>
+
+<img src="{% static 'dataset.png' %}" alt="screenshot of sample data" width="100%"/>
+
+<h3>Fields</h3>
+
+<table border="1">
+<tbody>
+  <tr><th>Name</th><th>Type</th><th>Range</th><th>Description</th><th>Notes</th></tr>
+  <tr><td><code>multipers</code></td><td>decimal</td><td>1,1.3,1.4... 9-99</td><td>number of offenders</td><td>Decimal numbers in 2002 - ?</td></tr>
+  <tr><td><code>amount1</code></td><td>decimal</td><td>0-18,000,000</td><td>Money to be paid, of number of days in prison</td><td> </td></tr>
+  <tr><td><code>amount2</code></td><td>decimal</td><td>0-8,000,000</td><td> </td><td> </td></tr>
+  <tr><td><code>amount3</code></td><td>decimal</td><td>0-9,000,000</td><td> </td><td> </td></tr>
+  <tr><td><code>amount4</code></td><td>decimal</td><td>0-5,000,000</td><td> </td><td> </td></tr>
+  <tr><td><code>crttype</code></td><td>text</td><td>MC or CC</td><td>Type of court (mags or crown)</td><td> </td></tr>
+  <tr><td><code>ofgroup</code></td><td>text</td><td>IND, SMO, SNM</td><td> </td><td>IND: indictable offense,<br/>SMO: summary motoring offense,<br/>SNM: summary non-motoring offense</td></tr>
+  <tr><td><code>force</code></td><td>int</td><td>1-93</td><td>police force code</td><td>Green book, sheet 6</td></tr>
+  <tr><td><code>age</code></td><td>int</td><td>18-99</td><td>Age of offender at the time of outcome</td><td></td></tr>
+  <tr><td><code>month</code></td><td>int</td><td>1-12</td><td>Month of the outcome</td><td></td></tr>
+  <tr><td><code>year</code></td><td>int</td><td>2002-2012</td><td>Year of outcome</td><td></td></tr>
+  <tr><td><code>court</code></td><td>int</td><td>401-5986</td><td>court number</td><td> </td></tr>
+  <tr><td><code>sex</code></td><td>int</td><td>1,2,3,9</td><td>1: Male<br/>, 2: Female,<br/> 3: non-people (organisation, etc.),<br/> 9:unstated/unrecorded</td><td>Green book sheet 13</td></tr>
+  <tr><td><code>ethcode</code></td><td>int</td><td>0-9</td><td>ethnicity</td><td>Green book sheet 14 (only covers 1-4,9)</td></tr>
+  <tr><td><code>classctn</code></td><td>int</td><td>100-82599</td><td>offense?</td><td>Orange book</td></tr>
+  <tr><td><code>plea</code></td><td>int</td><td>0-3</td><td>1: guilty, 2: not, 3: n/a, 0?</td><td>Green book sheet 8</td></tr>
+  <tr><td><code>proc</code></td><td>int</td><td>1-83</td><td>Proceeding</td><td>Green book sheet 9</td></tr>
+  <tr><td><code>disp1</code></td><td>int</td><td>0-996</td><td>Disposal</td><td>Green book sheet 4</td></tr>
+  <tr><td><code>disp2</code></td><td>int</td><td>0-996</td><td><span></span></td><td></td></tr>
+  <tr><td><code>disp3</code></td><td>int</td><td>0-996</td><td><span></span></td><td></td></tr>
+  <tr><td><code>disp4</code></td><td>int</td><td>0-996</td><td><span></span></td><td></td></tr>
+  <tr><td><code>clastype</code></td><td>int</td><td>0-5</td><td>breakdown for SMO and SNM offenses</td><td> </td></tr>
+  <tr><td><code>priority</code></td><td>int</td><td>0-999</td><td> </td><td> </td></tr>
+  <tr><td><code>guilty</code></td><td>int</td><td>0-1</td><td>guilty/not guilty?</td><td> </td></tr>
+  <tr><td><code>sent</code></td><td>int</td><td>0-1</td><td>sentenced</td><td> </td></tr>
+  <tr><td><code>result</code></td><td>int</td><td>1-15</td><td> </td><td> </td></tr>
+  <tr><td><code>offtyp</code></td><td>int</td><td>1-12</td><td>Old Home Office offense grouping</td><td> </td></tr>
+  <tr><td><code>ofclas</code></td><td>int</td><td>1-825</td><td>First 3 digits of classctm (broader classification of offense)</td><td> </td></tr>
+  <tr><td><code>notoff</code></td><td>int</td><td>0-1</td><td>1: notifiable offense (outcome reported back to the police) </td><td> </td></tr>
+</tbody>
+</table>
+
+
+</div>
+
+{% endblock %}
