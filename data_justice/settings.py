@@ -46,6 +46,7 @@ INSTALLED_APPS = (
     'home',
     'api',
     'apps',
+    'feedback',
 )
 
 MIDDLEWARE_CLASSES = (
