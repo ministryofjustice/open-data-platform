@@ -59,3 +59,6 @@ if you want to set a password:
     MOJOD_BASIC_WWW_AUTHENTICATION_PASSWORD="password" \
     MOJOD_BASIC_WWW_AUTHENTICATION=True\
 
+and then:
+
+    heroku run python manage.py syncdb --all
