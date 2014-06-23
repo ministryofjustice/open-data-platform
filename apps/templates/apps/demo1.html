@@ -13,10 +13,9 @@
 <p>This is a very simple barchart showing the number of cases processed by month between 2002 and 2012.</p>
 
 <style>
-
-.bar {
-  fill: steelblue;
-}
+.oddbar { fill: #88f; }
+.evenbar { fill: #88c; }
+.bar:hover { fill: #d88; }
 
 .axis text {
   font: 10px sans-serif;
@@ -32,6 +31,8 @@
 .x.axis path {
   display: none;
 }
+
+
 
 </style>
 <svg id="demo1"></svg>
