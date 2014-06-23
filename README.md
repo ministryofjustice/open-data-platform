@@ -16,11 +16,12 @@ Running locally
     `pip -r requirements.txt`
 
 - create a postgresql database
-- set the following environment variables:
+- set the following environment variables (adapt as needed):
 
     `export DATABASE_URL=postgres://dbuser:dbpassword@localhost:port/dbname`
     `export MOJOD_DEBUG=True`
     `export MOJOD_TEMPLATE_DEBUG=True`
+    `export MOJOD_STATIC_ROOT=/tmp/static`
 
 If you want to set a password:
 
@@ -49,15 +50,16 @@ Follow the [instructions](https://devcenter.heroku.com/articles/getting-started-
 
     heroku config:set \
     DJANGO_SETTINGS_MODULE=data_justice.settings \
-    DATABASE_URL=postgres://dbuser:dbpassword@localhost:port/dbname
-    ALLOWED_HOST="*"
+    DATABASE_URL=postgres://dbuser:dbpassword@localhost:port/dbname \
+    MOJD_ALLOWED_HOST="*" \
+    MOJD_STATIC_ROOT='/static/'
 
 if you want to set a password:
 
     heroku config:set \
     MOJOD_BASIC_WWW_AUTHENTICATION_USERNAME="user" \
     MOJOD_BASIC_WWW_AUTHENTICATION_PASSWORD="password" \
-    MOJOD_BASIC_WWW_AUTHENTICATION=True\
+    MOJOD_BASIC_WWW_AUTHENTICATION=True
 
 and then:
 
