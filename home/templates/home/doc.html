@@ -6,7 +6,7 @@
 
 <header class="page-header group">
   <div>
-    <h1>The court proceedings dataset</h1>
+    <h1>The court proceedings and trials dataset</h1>
   </div>
 </header>
 
@@ -14,7 +14,10 @@
 
 <h2>Caveats</h2>
 
-<p><strong>MOJ provides no guarantee as to the accuracy and the completeness of the data provided.</strong></p>
+<ul>
+  <li><strong>MOJ provides no guarantee as to the accuracy and the completeness of the data provided.</strong></li>
+  <li><strong>The description below is currently incomplete. We are working to improve it.</strong></li>
+</ul>
 
 <h2>License and Copyright</h2>
 
@@ -22,19 +25,27 @@
 
 <h2>Contents of the Zip file</h2>
 
-<ul>
-  <li>Green Book (General codes) 2014.xls</li>
-  <li>Orange Compendium (A to Z Acts and sections codes) 2014.xls</li>
-  <li>hack02.csv</li>
-  <li>hack03.csv</li>
-  <li>...csv</li>
-</ul>
+<pre>
+390K Green Book (General codes) 2014.xls
+1.9M Orange Compendium (A to Z Acts and sections codes) 2014.xls
+158M hack02.csv
+166M hack03.csv
+166M hack04.csv
+156M hack05.csv
+147M hack06.csv
+145M hack07.csv
+144M hack08.csv
+149M hack09.csv
+147M hack10.csv
+142M hack11.csv
+134M hack12.csv
+</pre>
 
-<p>The CSV files are the data itself, described below, and the XLS provide table for decoding the indexes in the file.</p>
+<p>The CSV files are the data itself, by year, and the XLS provide table for decoding the indexes in the file.</p>
 
 <h2>The CSV files</h2>
 
-<p>Each line in the files describes a court proceedings, as illustrated in this picture:</p>
+<p>Each line in the files describes a court outcome, as illustrated below:</p>
 
 <img src="{% static 'dataset.png' %}" alt="screenshot of sample data" width="100%"/>
 

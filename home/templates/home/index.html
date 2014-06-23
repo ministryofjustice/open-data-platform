@@ -5,17 +5,31 @@
 
 <header class="page-header group">
   <div>
-    <h1>MOJ Open Data</h1>
+    <h1><small>Ministry of Justice</small><br/>
+    Criminal Court Proceedings and Trials</h1>
   </div>
 </header>
 
-<p>This is the experimental open data platform from MOJ Digital Services.</p>
-<p>It currently offers a single dataset: case-level criminal court outcomes from 2002 to 2012 (adult offenders). A <a href="{% url 'home:doc' %}">description</a> of the dataset is available.</p>
+<h2>What's this?</h2>
+
+<p>This is the site of a project that aims to improve the way MOJ publishes open data. The plan is:</p>
+<ul>
+  <li>publish a single dataset in raw form</li>
+  <li>work with interested parties to understand user needs</li>
+  <li>from those needs, improve the way we publish the data</li>
+  <li>iterate until the product meets expectations</li>
+</ul>
+
+<p>The success of this project will hopefully lead to a process for MOJ to publish data better, and incentive for us to offer more datasets in the same way.</p>
+
+<h2>The dataset</h2>
+
+<p>This site lets you access the list of criminal court outcomes from 2002 to 2012 (only adult offenders). A detailed <a href="{% url 'home:doc' %}">description</a> of the data is available.</p>
 
 <ul>
   <li><a href="{% url 'download:index' %}">Download</a> the raw dataset</li>
-  <li>Access the data via the <a href="{% url 'api:index' %}">API</a></li>
-  <li>See a few <a href="{% url 'apps:index' %}">applications and visualisations</a> built from the data</a></li>
+  <li><a href="{% url 'api:index' %}">Other ways</a> to access the data.</li>
+  <li><a href="{% url 'apps:index' %}">applications and visualisations</a> built from the dataset</a></li>
 </ul>
 
 {% endblock %}
