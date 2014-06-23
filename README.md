@@ -52,7 +52,7 @@ Follow the [instructions](https://devcenter.heroku.com/articles/getting-started-
     DJANGO_SETTINGS_MODULE=data_justice.settings \
     DATABASE_URL=postgres://dbuser:dbpassword@localhost:port/dbname \
     MOJD_ALLOWED_HOST="*" \
-    MOJD_STATIC_ROOT='/static/'
+    MOJD_STATIC_ROOT=staticfiles
 
 if you want to set a password:
 
