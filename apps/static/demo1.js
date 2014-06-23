@@ -56,3 +56,16 @@ d3.csv("/static/proceedings-by-month.csv", type, function(error, data) {
       .attr("height", function(d) { return height - y(d.count); })
       .attr("width", 8);
 });
+
+
+var lineFunction = d3.svg.line()
+      .x(function(d) { return x(new Date(d.year,7,1)); })
+      .y(function(d) { return y(d.average); })
+      .interpolate("linear");
+
+d3.csv("/static/proceedings-by-year.csv", type, function(error, data) {
+  chart
+    .append("path")
+    .attr("class","line")
+    .attr("d", lineFunction(data));
+});
