@@ -16,11 +16,49 @@
 
 <p>What we can do is make it available in useful ways, so that external services are easier to build. Right now, the data is <a href="{% url 'download:index' %}">available in raw form</a>, but with your help, we can improve this platform to deliver the data more usefully.</p>
 
-<p>That said, we have a few visualizations to show off the potential of this dataset:</p>
+<p>That said, we have a few visualizations to show off the potential of this dataset</p>
 
-<ul>
-  <li><a href="demo1">proceedings by month</a></li>
-</ul>
+<h1>Sample Visualizations</h1>
+
+<p>Caveat: these graphs are at most as accurate and complete as the dataset they are built on.</p>
+
+<style>
+.oddbar { fill: #88f; }
+.evenbar { fill: #88c; }
+.bar:hover { fill: #d88; }
+
+.axis text {
+  font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.x.axis path {
+  display: none;
+}
+
+.line {
+   fill: none;
+   stroke: #353;
+   stroke-width: 5px;
+   stroke-linecap: round;
+ }
+
+
+</style>
+
+<h2>Number of cases per month</h2>
+
+<p>This is a very simple barchart showing the number of cases processed by month between 2002 and 2012. The line shows the average yearly totals.</p>
+
+<svg id="demo1"></svg>
+<script src="{% static 'd3.v3.min.js' %}"></script>
+<script src="{% static 'demo1.js' %}"></script>
 
 {% endblock %}
 
