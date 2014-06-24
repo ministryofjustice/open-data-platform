@@ -36,6 +36,7 @@ var chart = d3.select("#demo1")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 d3.csv("/static/proceedings-by-month.csv", type, function(error, data) {
+  var yearly_averages = [], month, monthIndex, yearIndex, lineFunction;
   y.domain([0, d3.max(data, function(d) { return d.count; })]);
 
   chart.append("g")
@@ -55,17 +56,24 @@ d3.csv("/static/proceedings-by-month.csv", type, function(error, data) {
       .attr("y", function(d) { return y(d.count); })
       .attr("height", function(d) { return height - y(d.count); })
       .attr("width", 8);
-});
+
+  for (month=0; month<data.length; month++) {
+    monthIndex = month%12;
+    yearIndex = Math.floor(month/12);
+    if (monthIndex === 0) {
+      yearly_averages[yearIndex] = {average: 0, year: 2002+yearIndex};
+    }
+    yearly_averages[yearIndex].average += data[month].count/12;
+  }
 
 
-var lineFunction = d3.svg.line()
-      .x(function(d) { return x(new Date(d.year,7,1)); })
-      .y(function(d) { return y(d.average); })
-      .interpolate("linear");
+  lineFunction = d3.svg.line()
+    .x(function(d) { return x(new Date(d.year,7,1)); })
+    .y(function(d) { return y(d.average); })
+    .interpolate("linear");
 
-d3.csv("/static/proceedings-by-year.csv", type, function(error, data) {
   chart
     .append("path")
     .attr("class","line")
-    .attr("d", lineFunction(data));
+    .attr("d", lineFunction(yearly_averages));
 });
