@@ -1,4 +1,4 @@
-var d3;
+var d3, topojson;
 
 function type(d) {
   d.count = +d.count; // coerce to number
@@ -76,4 +76,40 @@ d3.csv("/static/proceedings-by-month.csv", type, function(error, data) {
     .append("path")
     .attr("class","line")
     .attr("d", lineFunction(yearly_averages));
+});
+
+//%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+// Map
+
+width = 1000;
+height = 800;
+
+var svg = d3.select("#demo2")
+  .attr("width", width)
+  .attr("height", height);
+
+
+var projection = d3.geo.albers()
+    .center([0, 53])
+    .rotate([4.4, 0])
+    .parallels([50, 60])
+    .scale(1450 * 5)
+    .translate([-200+width / 2, height / 2]);
+
+var path = d3.geo.path()
+    .projection(projection);
+
+d3.json("/static/uk.json", function(error, uk) {
+  svg
+    .append("path")
+    .datum(topojson.feature(uk, uk.objects.subunits))
+    .attr("class","subunit")
+    .attr("d", path);
+
+  d3.json("/static/court-locations.json", function(error, courts) {
+    svg.append("path")
+      .datum(topojson.feature(courts, courts.objects.courts))
+      .attr("d", path)
+      .attr("class", "place");
+  });
 });
