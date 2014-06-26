@@ -88,7 +88,6 @@ var svg = d3.select("#demo2")
   .attr("width", width)
   .attr("height", height);
 
-
 var projection = d3.geo.albers()
     .center([0, 53])
     .rotate([4.4, 0])
@@ -106,10 +105,44 @@ d3.json("/static/uk.json", function(error, uk) {
     .attr("class","subunit")
     .attr("d", path);
 
-  d3.json("/static/court-locations.json", function(error, courts) {
-    svg.append("path")
-      .datum(topojson.feature(courts, courts.objects.courts))
-      .attr("d", path)
-      .attr("class", "place");
+  d3.json("/static/court-locations.json", function(error, topology) {
+    d3.csv("/static/ages.csv", function(error, court_ages) {
+      function averageAge(courtNumber) {
+        var court;
+        for (court in court_ages) {
+          if (court_ages[court].court == courtNumber) {
+            return court_ages[court].avg;
+          }
+        }
+        return 0;
+      }
+
+      var courts = topojson.feature(topology, topology.objects.courts).features;
+      courts = courts.filter(function(element) {
+        var rgb = averageAge(element.properties.court_number);
+        return rgb!=0;
+      });
+
+      svg.selectAll("circle")
+        .data(courts)
+        .enter()
+        .append("circle")
+        .attr("cx", function(d) {
+          return projection(d.geometry.coordinates)[0];
+        })
+        .attr("cy", function(d) {
+          return projection(d.geometry.coordinates)[1];
+        })
+        .attr("r", 7)
+        .style("fill", function(d) {
+          var rgb = averageAge(d.properties.court_number);
+          rgb = Math.floor(23*(rgb-25));
+          return "rgba("+rgb+","+rgb+","+rgb+",1)";
+        })
+        .on("mouseover", function(e) {
+          console.log(e.properties, averageAge(e.properties.court_number));
+        })
+        .append("title").text(function(d) { return Math.floor(averageAge(d.properties.court_number));});
+    });
   });
 });
