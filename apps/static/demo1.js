@@ -119,8 +119,7 @@ d3.json("/static/uk.json", function(error, uk) {
 
       var courts = topojson.feature(topology, topology.objects.courts).features;
       courts = courts.filter(function(element) {
-        var rgb = averageAge(element.properties.court_number);
-        return rgb!=0;
+        return averageAge(element.properties.court_number) != 0;
       });
 
       svg.selectAll("circle")
@@ -139,10 +138,7 @@ d3.json("/static/uk.json", function(error, uk) {
           rgb = Math.floor(23*(rgb-25));
           return "rgba("+rgb+","+rgb+","+rgb+",1)";
         })
-        .on("mouseover", function(e) {
-          console.log(e.properties, averageAge(e.properties.court_number));
-        })
-        .append("title").text(function(d) { return Math.floor(averageAge(d.properties.court_number));});
+        .append("title").text(function(d) { return d.properties.name+": "+Math.floor(averageAge(d.properties.court_number))+" years old";});
     });
   });
 });
