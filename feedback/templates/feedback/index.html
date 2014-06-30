@@ -3,6 +3,17 @@
 
 {% block content %}
 
+<style>
+.invalid-field {
+   color: red;
+   display: none;
+}
+.submit-warning {
+   color: yellow;
+   display: none;
+}
+</style>
+
 <header class="page-header group">
   <div>
     <h1>Feedback</h1>
@@ -19,13 +30,16 @@
   </div>
   <div>
     <label for="email">Your email address</label><br/>
-    <input type="email" name="email"/>
+    <input type="email" name="email" id="email"/> <span id="email-error" class="invalid-field">This isn't a valid email address</span>
   </div>
   <div>
     <label for="comment">Comments</label><br/>
     <textarea name="comment" rows="4" cols="50"></textarea>
   </div>
-  <input type="submit" value="continue"/>
+  <input disabled type="submit" value="continue"/>
 </form>
+
+<script src="{% static 'jquery.js' %}"></script>
+<script src="{% static 'form.js' %}"></script>
 
 {% endblock %}
