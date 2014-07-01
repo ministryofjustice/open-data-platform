@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/1.6/ref/settings/
 """
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-import os
+import os,sys
 BASE_DIR = os.path.dirname(os.path.dirname(__file__))
 
 # Quick-start development settings - unsuitable for production
@@ -29,6 +29,10 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 )
 
 ALLOWED_HOSTS = [os.environ.get('MOJOD_ALLOWED_HOST', '')]
+
+if os.environ.get('DATABASE_URL') == None:
+    print 'You must set the DATABASE_URL environment variable. Format: "postgres://username:password@host:port/dbname"'
+    sys.exit(-1)
 
 
 # Application definition
