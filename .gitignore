@@ -54,3 +54,6 @@ docs/_build/
 
 # heroku
 staticfiles
+
+# IDE stuff
+.tern-port
