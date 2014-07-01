@@ -89,7 +89,6 @@
   <tr><td><code>result</code></td><td>int</td><td>1-15</td><td>
     Result of court appearance:
     <ul>
-      <li>00: FTA</li>
       <li>01: Proceeding discontinued</li>
       <li>02: Discharged Sec 6</li>
       <li>03: Withdrawn</li>
@@ -105,8 +104,9 @@
       <li>13: Suspended sentence</li>
       <li>14: Immediate custody</li>
       <li>15: Otherwise dealt with</li>
-  </td><td>Green book – TO UPDATE</td></tr>
+  </td></tr>
   <tr><td><code>offtyp</code></td><td>int</td><td>1-12</td><td>
+    Old Home Office / ONS offense grouping:
     <ul>
       <li>01: Violence against the person</li>
       <li>02: Sexual offences</li>
@@ -121,7 +121,7 @@
       <li>11: Summary non-motoring offences</li>
       <li>12: Summary motoring offences</li>
     </ul>
-  </td><td>Old Home Office / ONS offense grouping</td></tr>
+  </td><td></td></tr>
   <tr><td><code>ofclas</code></td><td>int</td><td>1-825</td><td>First 3 digits of <code>classctn</code> (broader classification of offense)</td><td> </td></tr>
   <tr><td><code>notoff</code></td><td>int</td><td>0-1</td><td>1: notifiable offense (outcome reported back to the police) </td><td> </td></tr>
 </tbody>
