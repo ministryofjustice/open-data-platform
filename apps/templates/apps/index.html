@@ -57,24 +57,39 @@
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   font-size: 10px;
   pointer-events: none;
-}
+ }
+
+ .svg-alternate-demo1 { display: none; }
+ .no-svg .svg-alternate-demo1 {
+   display: block;
+   width: 100%;
+   background-image: url({% static 'cases_per_month_fallback.png' %});
+ }
+
+ .svg-alternate-demo2 { display: none; }
+ .no-svg .svg-alternate-demo2 {
+   display: block;
+   width: 100%;
+   background-image: url({% static 'map_fallback.png' %});
+ }
+
 </style>
 
 <h2>Number of cases per month</h2>
 
 <p>This is a very simple barchart showing the number of cases processed by month between 2002 and 2012. The line shows the average yearly totals.</p>
 
-<svg id="demo1">
-  <img src="{% static 'cases_per_month_fallback.png' %}" alt="number of cases per month" width="100%"/>
-</svg>
+<svg id="demo1"></svg>
+<div class="svg-alternate-demo1"></div>
 
 <h2>Map</h2>
 
 <p>The map below shows the average age of offenders at each court on the map, over the 10-year period. Black is youngest (25 years old average), white is older (36 years old average). Leave the pointer on a circle to see the actual value.</p>
 
-<svg id="demo2">
-  <img src="{% static 'map_fallback.png' %}" alt="average age per court"  width="100%"/>
-</svg>
+
+<svg id="demo2"></svg>
+<div class="svg-alternate-demo2"></div>
+
 
 <script src="{% static 'd3.v3.min.js' %}"></script>
 <script src="{% static 'topojson.v1.min.js' %}"></script>
