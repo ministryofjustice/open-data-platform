@@ -89,7 +89,14 @@ var d3, topojson;
 
   var svg = d3.select("#demo2")
     .attr("width", width)
-    .attr("height", height);
+    .attr("height", height)
+//    .on("click", function() { console.log(d3.mouse(this)); })
+  ;
+
+  var svgTopGroup=svg
+    .append("g")
+    .attr("id","svgTopGroup")
+  ;
 
   var projection = d3.geo.albers()
       .center([0, 53])
@@ -101,15 +108,31 @@ var d3, topojson;
   var path = d3.geo.path()
       .projection(projection);
 
+  var svgCourtText;
+
+  function zoomTo(x,y,scale) {
+    d3.select("#svgTopGroup")
+      .transition()
+      .duration(750)
+      .attr("transform", "scale("+scale+") translate("+x+","+y+")")
+    ;
+  }
+
   d3.json("/static/uk.json", function(error, uk) {
-    svg
+    svgTopGroup
       .append("path")
       .datum(topojson.feature(uk, uk.objects.subunits))
       .attr("class","subunit")
-      .attr("d", path);
+      .attr("d", path)
+      .on("click",function(){
+        if (svgCourtText) { svgCourtText.remove(); }
+        zoomTo(0,0,1); })
+    ;
+
 
     d3.json("/static/court-locations.json", function(error, topology) {
       d3.csv("/static/ages.csv", function(error, court_ages) {
+        var svgCourtGroup;
         function averageAge(courtNumber) {
           var court;
           for (court in court_ages) {
@@ -125,10 +148,14 @@ var d3, topojson;
           return averageAge(element.properties.court_number) !== 0;
         });
 
-        svg.selectAll("circle")
+        svgCourtGroup = svgTopGroup.selectAll(".court")
           .data(courts)
           .enter()
-          .append("circle")
+          .append("g")
+          .attr("class","court")
+        ;
+
+        svgCourtGroup.append("circle")
           .attr("cx", function(d) {
             return projection(d.geometry.coordinates)[0];
           })
@@ -141,7 +168,17 @@ var d3, topojson;
             rgb = Math.floor(23*(rgb-25));
             return "rgba("+rgb+","+rgb+","+rgb+",1)";
           })
-          .append("title").text(function(d) { return d.properties.name+": "+Math.floor(averageAge(d.properties.court_number))+" years old";});
+          .on("click", function(d) {
+            var mouse=d3.mouse(this);
+            if (svgCourtText) { svgCourtText.remove(); }
+            zoomTo((1/3-1)*mouse[0],(1/3-1)*mouse[1],3);
+            svgCourtText = svgCourtGroup.insert("text")
+              .attr("x",  projection(d.geometry.coordinates)[0])
+              .attr("y", projection(d.geometry.coordinates)[1])
+              .text(d.properties.name+": "+Math.floor(averageAge(d.properties.court_number)))
+            ;
+          })
+        ;
       });
     });
   });
