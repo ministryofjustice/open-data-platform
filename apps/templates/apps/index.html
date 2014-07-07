@@ -68,6 +68,9 @@
    height: 537px;
    background-image: url({% static 'cases_per_month_fallback.png' %});
  }
+.no-svg .svg-demo1 {
+   display: none;
+ }
 
  .svg-alternate-demo2 { display: none; }
  .no-svg .svg-alternate-demo2 {
@@ -88,7 +91,7 @@
 
 <h2>Map</h2>
 
-<p>The map below shows the average age of offenders at each court on the map, over the 10-year period. Black is youngest (25 years old average), white is older (36 years old). Click on a circle to see that court's details.</p>
+<p>The map below shows the average age of offenders at each court on the map, over the 10-year period. Black is youngest (25 years old average), white is older (36 years old). <span class="svg-demo1">Click on a circle to see that court's details.</span></p>
 
 
 <svg id="demo2"></svg>
