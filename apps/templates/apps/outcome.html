@@ -1,0 +1,29 @@
+{% extends 'moj_template/base.html' %}
+{% load staticfiles %}
+
+{% block content %}
+<div class="content inner cf">
+  <header class="page-header group">
+    <div>
+      <h1>Outcome</h1>
+    </div>
+  </header>
+
+  <p>This is the description of the case described by the following CSV data:</p>
+  <pre>{{ csv }}</pre>
+
+  {% if outcome %}
+
+  <ul>
+    <li>This outcome concerns {{ outcome.multipers }} defendant(s)</li>
+    <li>Defendant was {{ outcome.age }} years old. (Age is defaulted to 25 if date of birth information is not recorded.)</li>
+    <li>Date of outcome: {{ outcome.month }}/{{ outcome.year }}</li>
+    <li>Court type: {{ outcome.crttype }}</li>
+  </ul>
+
+  {% else %}
+  <p>This CSV line doesn't correspond to a valid outcome</p>
+  {% endif %}
+
+</div>
+{% endblock %}

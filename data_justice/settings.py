@@ -30,10 +30,6 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 ALLOWED_HOSTS = [os.environ.get('MOJOD_ALLOWED_HOST', '')]
 
-if os.environ.get('DATABASE_URL') == None:
-    print 'You must set the DATABASE_URL environment variable. Format: "postgres://username:password@host:port/dbname"'
-    sys.exit(-1)
-
 
 # Application definition
 
@@ -70,12 +66,21 @@ WSGI_APPLICATION = 'data_justice.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/1.6/ref/settings/#databases
+if os.environ.get('DATABASE_URL') == None:
+    print 'You must set the DATABASE_URL environment variable. Format: "postgres://username:password@host:port/dbname"'
+    sys.exit(-1)
 
 import dj_database_url
-
 DATABASES = {
-    'default': dj_database_url.config()
+    'default': dj_database_url.config(),
 }
+
+outcomes_database = os.environ.get('MOJOD_OUTCOMES_DB_URL')
+if outcomes_database == None:
+    print 'Warning! No outcomes database specified. Some site features may not work.'
+else:
+    DATABASES['outcomes'] = dj_database_url.parse(outcomes_database)
+
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/

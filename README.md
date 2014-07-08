@@ -64,3 +64,15 @@ if you want to set a password:
 and then:
 
     heroku run python manage.py syncdb --all
+
+Outcome database
+----------------
+
+The application needs to connect to a database that contains the outcomes and other data (court names, offense descriptions, etc). The site will work without that database, but it won't offer the most useful features.
+
+If such a database is set up, its credentials should be in the MOJOD_OUTCOMES_DB_URL variable:
+
+    MOJOD_OUTCOMES_DB_URL=postgres://dbuser:dbpassword@localhost:port/dbname
+
+
+The database schema isn't complete at this point and will be documented as it stops fluctuating. The model file (apps/models.py) contains the current django model for the database.
