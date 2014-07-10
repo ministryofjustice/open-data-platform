@@ -5,7 +5,7 @@ from django.db.utils import ConnectionDoesNotExist
 import string, re
 
 
-from home.models import Crttype, CrownCourts
+from home.models import Crttype, Courts
 
 class OutcomeView(generic.View):
 
@@ -13,10 +13,7 @@ class OutcomeView(generic.View):
         court = {}
         try:
             court['type'] = Crttype.objects.using('outcomes').get(type=outcome_data[5]).name
-            if outcome_data[5] == 'CC':
-                court['name'] = CrownCourts.objects.using('outcomes').get(code=outcome_data[11]).name
-            else:
-                court['name'] = outcome_data[11]
+            court['name'] = Courts.objects.using('outcomes').get(number=int(outcome_data[11])).name
         except ConnectionDoesNotExist:
             court['type'] = outcome_data[5]
             court['name'] = outcome_data[11]
