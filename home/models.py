@@ -28,6 +28,27 @@ class Crttype(models.Model):
         managed = False
         db_table = 'crttype'
 
+class Ofgroup(models.Model):
+    code = models.CharField(primary_key=True, max_length=10)
+    description = models.CharField(max_length=1024, blank=True)
+    class Meta:
+        managed = False
+        db_table = 'ofgroup'
+
+class Sex(models.Model):
+    code = models.IntegerField(primary_key=True)
+    description = models.CharField(max_length=1024, blank=True)
+    class Meta:
+        managed = False
+        db_table = 'sex'
+
+class Ethcode(models.Model):
+    code = models.CharField(primary_key=True, max_length=10)
+    description = models.CharField(max_length=1024, blank=True)
+    class Meta:
+        managed = False
+        db_table = 'ethcode'
+
 class Offenses(models.Model):
     code = models.CharField(max_length=20, blank=True)
     act = models.CharField(max_length=200, blank=True)

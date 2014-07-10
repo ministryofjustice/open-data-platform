@@ -9,17 +9,27 @@
     </div>
   </header>
 
-  <p>This is the description of the case described by the following CSV data:</p>
+  <p>This is the description of the case encoded as the following CSV data:</p>
   <pre>{{ csv }}</pre>
 
   {% if outcome %}
 
   <ul>
-    <li>This outcome concerns {{ outcome.multipers }} defendant{{ outcome.multipers|pluralize }}.</li>
-    <li>Defendant was {{ outcome.age }} years old. (Age is defaulted to 25 if date of birth information is not recorded.)</li>
+    <li>Defendant:
+      <ul>
+        <li>Number of defendants: {{ outcome.defendant.number }}</li>
+        <li>Age: {{ outcome.defendant.age }} years old. (Age is defaulted to 25 if date of birth information is not recorded.)</li>
+        <li>Sex: {{ outcome.defendant.sex }}</li>
+        <li>Ethnicity: {{ outcome.defendant.ethnicity }}</li>
+      </ul>
+    </li>
     <li>Date of outcome: {{ outcome.month }}/{{ outcome.year }}</li>
     <li>Court: {{ outcome.court.name|join:" / " }} ({{ outcome.court.type }})</li>
-
+    <li>Offence:
+      <ul>
+        <li>Group: {{ outcome.offence.group }}</li>
+      </ul>
+    </li>
   </ul>
 
   {% else %}
