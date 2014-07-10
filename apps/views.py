@@ -5,15 +5,23 @@ from django.db.utils import ConnectionDoesNotExist
 import string, re
 
 
-from home.models import Crttype
+from home.models import Crttype, CrownCourts
 
 class OutcomeView(generic.View):
 
-    def court_type(self, code):
+    def court_info(self, outcome_data):
+        court = {}
         try:
-            return Crttype.objects.using('outcomes').get(type=code).name
+            court['type'] = Crttype.objects.using('outcomes').get(type=outcome_data[5]).name
+            if outcome_data[5] == 'CC':
+                court['name'] = CrownCourts.objects.using('outcomes').get(code=outcome_data[11]).name
+            else:
+                court['name'] = outcome_data[11]
         except ConnectionDoesNotExist:
-            return code
+            court['type'] = outcome_data[5]
+            court['name'] = outcome_data[11]
+        finally:
+            return court
 
     def valid_outcome(self, outcome):
         return outcome != '' \
@@ -34,18 +42,17 @@ class OutcomeView(generic.View):
             context = RequestContext(request, {
                 'csv': outcome_csv,
                 'outcome': {
+                    'court': self.court_info(outcome_data),
                     'multipers': outcome_data[0],
                     'amount1': outcome_data[1],
                     'amount2': outcome_data[2],
                     'amount3': outcome_data[3],
                     'amount4': outcome_data[4],
-                    'crttype': self.court_type(outcome_data[5]),
                     'ofgroup': outcome_data[6],
                     'force': outcome_data[7],
                     'age': outcome_data[8],
                     'month': outcome_data[9],
                     'year': outcome_data[10],
-                    'court': outcome_data[11],
                     'sex': outcome_data[12],
                     'ethcode': outcome_data[13],
                     'classctn': outcome_data[14],
@@ -68,4 +75,3 @@ class OutcomeView(generic.View):
         else:
             context = RequestContext(request, {'csv': outcome_csv, 'outcome': None})
         return HttpResponse(template.render(context))
-

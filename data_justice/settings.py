@@ -81,7 +81,6 @@ if outcomes_database == None:
 else:
     DATABASES['outcomes'] = dj_database_url.parse(outcomes_database)
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/1.6/topics/i18n/
 
