@@ -7,40 +7,39 @@ A simplistic application to store open data, APIs and applications
 Running locally
 ---------------
 
-- check out this repository
-- make sure you have python, pip and postgresql installed
-- run:
+Check out this repository.
 
-    `cd open-data-platform`
+Make sure you have python, pip and postgresql installed.
 
-    `pip -r requirements.txt`
+Run:
 
-- create a postgresql database
-- set the following environment variables (adapt as needed):
+    cd open-data-platform
+    pip -r requirements.txt
 
-    `export DATABASE_URL=postgres://dbuser:dbpassword@localhost:port/dbname`
-    `export MOJOD_DEBUG=True`
-    `export MOJOD_TEMPLATE_DEBUG=True`
-    `export MOJOD_STATIC_ROOT=/tmp/static`
+Create a postgresql database
+
+Set the following environment variables (adapt as needed):
+
+    export DATABASE_URL=postgres://dbuser:dbpassword@localhost:port/dbname
+    export MOJOD_DEBUG=True
+    export MOJOD_TEMPLATE_DEBUG=True
+    export MOJOD_STATIC_ROOT=/tmp/static
 
 If you want to set a password:
 
-    `export MOJOD_BASIC_WWW_AUTHENTICATION_USERNAME="user"`
-    `export MOJOD_BASIC_WWW_AUTHENTICATION_PASSWORD="password"`
-    `export MOJOD_BASIC_WWW_AUTHENTICATION=True`
+    export MOJOD_BASIC_WWW_AUTHENTICATION_USERNAME="user"
+    export MOJOD_BASIC_WWW_AUTHENTICATION_PASSWORD="password"
+    export MOJOD_BASIC_WWW_AUTHENTICATION=True
 
+Initalise the application:
 
-- initalise the application:
+    python manage.py schemamigration download --initial
+    python manage.py migrate download
+    python manage.py syncdb
 
-    `python manage.py schemamigration download --initial`
+Run the application:
 
-    `python manage.py migrate download`
-
-    `python manage.py syncdb`
-
-- run the application
-
-    `python manage.py runserver`
+    Python manage.py runserver
 
 
 Running on heroku
@@ -70,7 +69,7 @@ Outcome database
 
 The application needs to connect to a database that contains the outcomes and other data (court names, offense descriptions, etc). The site will work without that database, but it won't offer the most useful features.
 
-If such a database is set up, its credentials should be in the MOJOD_OUTCOMES_DB_URL variable:
+If such a database is set up, its credentials should be set as:
 
     MOJOD_OUTCOMES_DB_URL=postgres://dbuser:dbpassword@localhost:port/dbname
 
