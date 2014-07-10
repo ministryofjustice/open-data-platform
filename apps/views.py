@@ -26,22 +26,13 @@ class OutcomeView(generic.View):
         finally:
             return court
 
-    def valid_outcome(self, outcome):
-        return outcome != '' \
-               and len(outcome) == 29 \
-               and re.compile('[0-9.]').match(outcome[0]) \
-               and re.compile('\d+').match(outcome[1]) \
-               and re.compile('\d+').match(outcome[2]) \
-               and re.compile('\d+').match(outcome[3]) \
-               and re.compile('\d+').match(outcome[4]) \
-               and re.compile('(MC|CC)').match(outcome[5])
-        # etc. It's all a bit hardwired, so should be dynamicalised
+    def valid_outcome(self, outcome_csv):
+        return re.compile('(\d+,){5}(MC|CC),(IND|SMO|SNM),(\d+,){21}\d+').match(outcome_csv)
 
     def get(self, request):
         outcome_csv = request.GET.get('csv','')
-        template = loader.get_template('apps/outcome.html')
-        outcome_data = string.split(outcome_csv,',')
-        if self.valid_outcome(outcome_data):
+        if self.valid_outcome(outcome_csv):
+            outcome_data = string.split(outcome_csv,',')
             context = RequestContext(request, {
                 'csv': outcome_csv,
                 'outcome': {
@@ -77,4 +68,5 @@ class OutcomeView(generic.View):
             })
         else:
             context = RequestContext(request, {'csv': outcome_csv, 'outcome': None})
+        template = loader.get_template('apps/outcome.html')
         return HttpResponse(template.render(context))
