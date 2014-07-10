@@ -21,16 +21,6 @@ class Courts(models.Model):
         managed = False
         db_table = 'courts'
 
-class CrownCourts(models.Model):
-    id = models.IntegerField(primary_key=True)
-    code = models.IntegerField(blank=True, null=True)
-    name = models.CharField(max_length=1024, blank=True)
-    tier = models.CharField(max_length=50, blank=True)
-    circuit = models.CharField(max_length=50, blank=True)
-    class Meta:
-        managed = False
-        db_table = 'crown_courts'
-
 class Crttype(models.Model):
     type = models.CharField(primary_key=True, max_length=2)
     name = models.CharField(max_length=255, blank=True)

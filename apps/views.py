@@ -13,10 +13,16 @@ class OutcomeView(generic.View):
         court = {}
         try:
             court['type'] = Crttype.objects.using('outcomes').get(type=outcome_data[5]).name
-            court['name'] = Courts.objects.using('outcomes').get(number=int(outcome_data[11])).name
+            def get_name(court): return court.name
+            courts = Courts.objects.using('outcomes').filter(number=outcome_data[11])
+            if len(courts)==0:
+                court_names = [outcome_data[11]]
+            else:
+                court_names = map(get_name,courts)
+            court['name'] = court_names
         except ConnectionDoesNotExist:
             court['type'] = outcome_data[5]
-            court['name'] = outcome_data[11]
+            court['name'] = [outcome_data[11]]
         finally:
             return court
 

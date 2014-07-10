@@ -18,7 +18,7 @@
     <li>This outcome concerns {{ outcome.multipers }} defendant{{ outcome.multipers|pluralize }}.</li>
     <li>Defendant was {{ outcome.age }} years old. (Age is defaulted to 25 if date of birth information is not recorded.)</li>
     <li>Date of outcome: {{ outcome.month }}/{{ outcome.year }}</li>
-    <li>Court: {% firstof outcome.court.name "n/a" %} ({{ outcome.court.type }})</li>
+    <li>Court: {{ outcome.court.name|join:" / " }} ({{ outcome.court.type }})</li>
 
   </ul>
 
