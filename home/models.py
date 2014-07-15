@@ -58,6 +58,21 @@ class Offenses(models.Model):
         managed = False
         db_table = 'offenses'
 
+class PoliceForces(models.Model):
+    code = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=255, blank=True)
+    region = models.CharField(max_length=255, blank=True)
+    class Meta:
+        managed = False
+        db_table = 'police_forces'
+
+class Pleas(models.Model):
+    code = models.IntegerField(primary_key=True)
+    description = models.CharField(max_length=255, blank=True)
+    class Meta:
+        managed = False
+        db_table = 'pleas'
+
 class Outcomes(models.Model):
     multipers = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
     amount1 = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)

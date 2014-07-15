@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from django.views import generic
 from django.template import RequestContext, loader
 from django.db.utils import ConnectionDoesNotExist
-from home.models import Crttype, Courts, Ofgroup, Sex, Ethcode
+from home.models import Outcomes, Crttype, Courts, Ofgroup, Sex, Ethcode, PoliceForces, Pleas
 
 class OutcomeView(generic.View):
 
@@ -46,42 +46,68 @@ class OutcomeView(generic.View):
     def valid_outcome(self, outcome_csv):
         return re.compile('(\d+,){5}(MC|CC),(IND|SMO|SNM),(\d+,){21}\d+').match(outcome_csv)
 
-    def get(self, request):
-        outcome_csv = request.GET.get('csv','')
-        if self.valid_outcome(outcome_csv):
-            outcome_data = string.split(outcome_csv,',')
-            context = RequestContext(request, {
-                'csv': outcome_csv,
-                'outcome': {
-                    'defendant': self.defendant_info(outcome_data),
-                    'court': self.court_info(outcome_data),
-                    'offence': self.offence_info(outcome_data),
-                    'month': outcome_data[9],
-                    'year': outcome_data[10],
+    def police_info(self, outcome_data):
+      police = {}
+      try:
+          police['force'] = PoliceForces.objects.using('outcomes').get(code=outcome_data[7]).name
+          police['region'] = PoliceForces.objects.using('outcomes').get(code=outcome_data[7]).region
+      except ConnectionDoesNotExist:
+          police['force'] = outcome_data[7]
+      finally:
+          return police
 
-                    'amount1': outcome_data[1],
-                    'amount2': outcome_data[2],
-                    'amount3': outcome_data[3],
-                    'amount4': outcome_data[4],
-                    'force': outcome_data[7],
-                    'classctn': outcome_data[14],
-                    'plea': outcome_data[15],
-                    'proc': outcome_data[16],
-                    'disp1': outcome_data[17],
-                    'disp2': outcome_data[18],
-                    'disp3': outcome_data[19],
-                    'disp4': outcome_data[20],
-                    'clastype': outcome_data[21],
-                    'priority': outcome_data[22],
-                    'guilty': outcome_data[23],
-                    'sent': outcome_data[24],
-                    'result': outcome_data[25],
-                    'offtyp': outcome_data[26],
-                    'ofclas': outcome_data[27],
-                    'notoff': outcome_data[28],
-                }
-            })
+    def plea_info(self, outcome_data):
+        try:
+            plea = Pleas.objects.using('outcomes').get(code=outcome_data[15]).description
+        except ConnectionDoesNotExist:
+            plea = outcome_data[15]
+        finally:
+            return plea
+
+    def get(self, request, outcome_id):
+        if outcome_id:
+            outcome = Outcomes.objects.using('outcomes').get(id=outcome_id)
+            outcome_data = [outcome.multipers,outcome.amount1,outcome.amount2,outcome.amount3,outcome.amount4,outcome.crttype,outcome.ofgroup,outcome.force,outcome.age,outcome.month,outcome.year,outcome.court,outcome.sex,outcome.ethcode,outcome.classctn,outcome.plea,outcome.proc,outcome.disp1,outcome.disp2,outcome.disp3,outcome.disp4,outcome.clastype,outcome.priority,outcome.guilty,outcome.sent,outcome.result,outcome.offtyp,outcome.ofclas,outcome.notoff,outcome.id]
+            outcome_csv = ''
         else:
-            context = RequestContext(request, {'csv': outcome_csv, 'outcome': None})
+            outcome_csv = request.GET.get('csv','')
+            if not self.valid_outcome(outcome_csv):
+                context = RequestContext(request, {'csv': outcome_csv, 'outcome': None})
+                template = loader.get_template('apps/outcome.html')
+                return HttpResponse(template.render(context))
+            else:
+                outcome_data = string.split(outcome_csv,',')
+
+        context = RequestContext(request, {
+            'csv': outcome_csv,
+            'outcome': {
+                'defendant': self.defendant_info(outcome_data),
+                'court': self.court_info(outcome_data),
+                'offence': self.offence_info(outcome_data),
+                'month': outcome_data[9],
+                'year': outcome_data[10],
+                'police' : self.police_info(outcome_data),
+                'plea': self.plea_info(outcome_data),
+
+                'amount1': outcome_data[1],
+                'amount2': outcome_data[2],
+                'amount3': outcome_data[3],
+                'amount4': outcome_data[4],
+                'classctn': outcome_data[14],
+                'proc': outcome_data[16],
+                'disp1': outcome_data[17],
+                'disp2': outcome_data[18],
+                'disp3': outcome_data[19],
+                'disp4': outcome_data[20],
+                'clastype': outcome_data[21],
+                'priority': outcome_data[22],
+                'guilty': outcome_data[23],
+                'sent': outcome_data[24],
+                'result': outcome_data[25],
+                'offtyp': outcome_data[26],
+                'ofclas': outcome_data[27],
+                'notoff': outcome_data[28],
+            }
+        })
         template = loader.get_template('apps/outcome.html')
         return HttpResponse(template.render(context))

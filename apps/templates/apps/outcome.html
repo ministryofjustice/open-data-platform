@@ -9,8 +9,10 @@
     </div>
   </header>
 
+  {% if csv %}
   <p>This is the description of the case encoded as the following CSV data:</p>
   <pre>{{ csv }}</pre>
+  {% endif %}
 
   {% if outcome %}
 
@@ -30,7 +32,13 @@
         <li>Group: {{ outcome.offence.group }}</li>
       </ul>
     </li>
+    <li>Plea: {{ outcome.plea }}</li>
+
   </ul>
+
+  <li>Police Force: {{ outcome.police.force }} {% if outcome.police.region %} ({{outcome.police.region}}) {% endif %}</li>
+
+
 
   {% else %}
   <p>This CSV line doesn't correspond to a valid outcome</p>
