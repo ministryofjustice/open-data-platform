@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.template import RequestContext, loader
 from django.utils import timezone
 from django.views import generic
-from home.models import Outcomes, Crttype, Courts, Ofgroup, Sex, Ethcode, PoliceForces, Pleas, Proceedings
+from home.models import Outcomes, Crttype, Courts, Ofgroup, Sex, Ethcode, PoliceForces, Pleas, Proceedings, Offences
 from feedback.models import Feedback
 import string, re
 
@@ -32,8 +32,15 @@ class OutcomeView(generic.View):
         offence = {}
         try:
             offence['group'] = Ofgroup.objects.using('outcomes').get(code=outcome_data[6]).description
-        except ConnectionDoesNotExist:
+            offences = Offences.objects.using('outcomes').filter(lookup=outcome_data[14]);
+            if len(offences) > 1:
+                offence['description'] = 'n/a'
+            else:
+                offence['description'] = offences[0].act
+        except Exception as e:
+            print e
             offence['group'] = outcome_data[6]
+            offence['description'] = outcome_data[14]
         finally:
             return offence
 
@@ -42,7 +49,8 @@ class OutcomeView(generic.View):
         try:
             defendant['sex'] = Sex.objects.using('outcomes').get(code=outcome_data[12]).description
             defendant['ethnicity'] = Ethcode.objects.using('outcomes').get(code=outcome_data[13]).description
-        except ConnectionDoesNotExist:
+        except Exception as e:
+            print e
             defendant['sex'] = outcome_data[12]
         finally:
             return defendant
@@ -61,7 +69,6 @@ class OutcomeView(generic.View):
             else:
                 outcome['proceeding']['description'] = proceeding_code
         except Exception as e:
-            print e
             outcome['proceeding']['description'] = proceeding_code
         finally:
             return outcome
@@ -121,7 +128,6 @@ class OutcomeView(generic.View):
                 'amount2': outcome_data[2],
                 'amount3': outcome_data[3],
                 'amount4': outcome_data[4],
-                'classctn': outcome_data[14],
                 'proc': outcome_data[16],
                 'disp1': outcome_data[17],
                 'disp2': outcome_data[18],
@@ -137,7 +143,7 @@ class OutcomeView(generic.View):
                 'notoff': outcome_data[28],
             }
         })
-        template = loader.get_template('apps/outcome.html')
+        template = loader.get_template('home/outcome.html')
         return HttpResponse(template.render(context))
 
 

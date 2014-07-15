@@ -60,14 +60,24 @@ class Ethcode(models.Model):
         managed = False
         db_table = 'ethcode'
 
-class Offenses(models.Model):
-    code = models.CharField(max_length=20, blank=True)
-    act = models.CharField(max_length=200, blank=True)
-    description = models.CharField(max_length=200, blank=True)
+class Offences(models.Model):
+    lookup = models.IntegerField()
+    act = models.CharField(max_length=1024, blank=True)
+    section = models.CharField(max_length=1024, blank=True)
+    description = models.CharField(max_length=10240, blank=True)
+    magsmaxsentence = models.CharField(max_length=255, blank=True)
+    magsclasstrial = models.CharField(max_length=255, blank=True)
+    magsclassunder18 = models.CharField(max_length=255, blank=True)
+    magsclassover18 = models.CharField(max_length=255, blank=True)
+    crownmaxsentence = models.CharField(max_length=255, blank=True)
+    crownclasstrial = models.CharField(max_length=255, blank=True)
+    crownclassconvlower = models.CharField(max_length=255, blank=True)
+    crimsec3 = models.CharField(max_length=255, blank=True)
+    yearinsertcodebooks = models.CharField(max_length=1024, blank=True)
     id = models.BigIntegerField(primary_key=True)
     class Meta:
         managed = False
-        db_table = 'offenses'
+        db_table = 'offences'
 
 class PoliceForces(models.Model):
     code = models.IntegerField(primary_key=True)
