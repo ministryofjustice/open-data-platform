@@ -1,9 +1,10 @@
 import string, re
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 from django.views import generic
 from django.template import RequestContext, loader
 from django.db.utils import ConnectionDoesNotExist
-from home.models import Outcomes, Crttype, Courts, Ofgroup, Sex, Ethcode, PoliceForces, Pleas
+from django.db.models import Q
+from home.models import Outcomes, Crttype, Courts, Ofgroup, Sex, Ethcode, PoliceForces, Pleas, Proceedings
 
 class OutcomeView(generic.View):
 
@@ -43,6 +44,26 @@ class OutcomeView(generic.View):
         finally:
             return defendant
 
+    def outcome_info(self, outcome_data):
+        proceeding_code = int(outcome_data[16])
+        outcome = {'proceeding':{}}
+
+        try:
+            if outcome_data[5] == 'MC':
+                query = Q(code=proceeding_code) & (Q(court='M') | Q(court='M & C'))
+                outcome['proceeding']['description'] = Proceedings.objects.using('outcomes').get(query).description
+            elif outcome_data[5] == 'CC':
+                query = Q(code=proceeding_code) & (Q(court='C') | Q(court='M & C'))
+                outcome['proceeding']['description'] = Proceedings.objects.using('outcomes').get(query).description
+            else:
+                outcome['proceeding']['description'] = proceeding_code
+        except Exception as e:
+            print e
+            outcome['proceeding']['description'] = proceeding_code
+        finally:
+            return outcome
+
+
     def valid_outcome(self, outcome_csv):
         return re.compile('(\d+,){5}(MC|CC),(IND|SMO|SNM),(\d+,){21}\d+').match(outcome_csv)
 
@@ -66,7 +87,10 @@ class OutcomeView(generic.View):
 
     def get(self, request, outcome_id):
         if outcome_id:
-            outcome = Outcomes.objects.using('outcomes').get(id=outcome_id)
+            try:
+                outcome = Outcomes.objects.using('outcomes').get(id=outcome_id)
+            except:
+                raise Http404
             outcome_data = [outcome.multipers,outcome.amount1,outcome.amount2,outcome.amount3,outcome.amount4,outcome.crttype,outcome.ofgroup,outcome.force,outcome.age,outcome.month,outcome.year,outcome.court,outcome.sex,outcome.ethcode,outcome.classctn,outcome.plea,outcome.proc,outcome.disp1,outcome.disp2,outcome.disp3,outcome.disp4,outcome.clastype,outcome.priority,outcome.guilty,outcome.sent,outcome.result,outcome.offtyp,outcome.ofclas,outcome.notoff,outcome.id]
             outcome_csv = ''
         else:
@@ -88,6 +112,7 @@ class OutcomeView(generic.View):
                 'year': outcome_data[10],
                 'police' : self.police_info(outcome_data),
                 'plea': self.plea_info(outcome_data),
+                'outcome': self.outcome_info(outcome_data),
 
                 'amount1': outcome_data[1],
                 'amount2': outcome_data[2],

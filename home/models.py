@@ -11,6 +11,17 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+class Proceedings(models.Model):
+    code = models.IntegerField(blank=True, null=True)
+    court = models.CharField(max_length=10, blank=True)
+    description = models.CharField(max_length=1024, blank=True)
+    legislation = models.CharField(max_length=1024, blank=True)
+    comments = models.CharField(max_length=1024, blank=True)
+    id = models.BigIntegerField(primary_key=True)
+    class Meta:
+        managed = False
+        db_table = 'proceedings'
+
 class Courts(models.Model):
     name = models.CharField(max_length=200, blank=True)
     latitude = models.DecimalField(max_digits=65535, decimal_places=65535, blank=True, null=True)
