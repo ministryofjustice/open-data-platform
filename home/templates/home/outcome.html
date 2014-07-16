@@ -39,6 +39,19 @@
     <li>Outcome:
       <ul>
         <li>Proceeding: {{ outcome.outcome.proceeding.description }}</li>
+        <li>Disposals:
+          <ul>
+            {% for disposal in outcome.outcome.disposals %}
+            {% if disposal.disp %}
+            <li>{{ disposal.disp.disposal }}: {{ disposal.amount }}
+              {% if disposal.disp.legislation %}
+              <small>({{ disposal.disp.legislation }})</small>
+              {% endif %}
+            </li>
+            {% endif %}
+            {% endfor %}
+          </ul>
+        </li>
       </ul>
     </li>
   </ul>

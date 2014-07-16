@@ -60,6 +60,18 @@ class Ethcode(models.Model):
         managed = False
         db_table = 'ethcode'
 
+class Disposals(models.Model):
+    code = models.IntegerField(primary_key=True)
+    court = models.CharField(max_length=255, blank=True)
+    age = models.CharField(max_length=255, blank=True)
+    disposal = models.CharField(max_length=1024, blank=True)
+    legislation = models.CharField(max_length=1024, blank=True)
+    comments = models.CharField(max_length=1024, blank=True)
+    type = models.CharField(max_length=1024, blank=True)
+    class Meta:
+        managed = False
+        db_table = 'disposals'
+
 class Offences(models.Model):
     lookup = models.IntegerField()
     act = models.CharField(max_length=1024, blank=True)

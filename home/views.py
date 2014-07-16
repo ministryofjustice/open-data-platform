@@ -5,7 +5,7 @@ from django.shortcuts import render, redirect
 from django.template import RequestContext, loader
 from django.utils import timezone
 from django.views import generic
-from home.models import Outcomes, Crttype, Courts, Ofgroup, Sex, Ethcode, PoliceForces, Pleas, Proceedings, Offences
+from home.models import Outcomes, Crttype, Courts, Ofgroup, Sex, Ethcode, PoliceForces, Pleas, Proceedings, Offences, Disposals
 from feedback.models import Feedback
 import string, re
 
@@ -32,7 +32,7 @@ class OutcomeView(generic.View):
         offence = {}
         try:
             offence['group'] = Ofgroup.objects.using('outcomes').get(code=outcome_data[6]).description
-            offences = Offences.objects.using('outcomes').filter(lookup=outcome_data[14]);
+            offences = Offences.objects.using('outcomes').filter(lookup=outcome_data[14])
             if len(offences) > 1:
                 offence['description'] = 'n/a'
                 offence['act'] = 'n/a'
@@ -47,7 +47,7 @@ class OutcomeView(generic.View):
             return offence
 
     def defendant_info(self, outcome_data):
-        defendant = {'age': outcome_data[8], 'number': outcome_data[0]};
+        defendant = {'age': outcome_data[8], 'number': outcome_data[0]}
         try:
             defendant['sex'] = Sex.objects.using('outcomes').get(code=outcome_data[12]).description
             defendant['ethnicity'] = Ethcode.objects.using('outcomes').get(code=outcome_data[13]).description
@@ -57,10 +57,19 @@ class OutcomeView(generic.View):
         finally:
             return defendant
 
+    def db_retrieve(self, object_type, query, default=None):
+        try:
+            result = object_type.objects.using('outcomes').filter(query)[0]
+        except Exception as e:
+            print "going to default"
+            print e
+            result = default
+        finally:
+            return result
+
     def outcome_info(self, outcome_data):
         proceeding_code = int(outcome_data[16])
-        outcome = {'proceeding':{}}
-
+        outcome = {'proceeding':{}, 'disposals':[], 'amounts':[]}
         try:
             if outcome_data[5] == 'MC':
                 query = Q(code=proceeding_code) & (Q(court='M') | Q(court='M & C'))
@@ -70,8 +79,18 @@ class OutcomeView(generic.View):
                 outcome['proceeding']['description'] = Proceedings.objects.using('outcomes').get(query).description
             else:
                 outcome['proceeding']['description'] = proceeding_code
+            outcome['disposals'].append({'disp':self.db_retrieve(Disposals,Q(code=int(outcome_data[17]))),'amount':outcome_data[1]})
+            outcome['disposals'].append({'disp':self.db_retrieve(Disposals,Q(code=int(outcome_data[18]))),'amount':outcome_data[2]})
+            outcome['disposals'].append({'disp':self.db_retrieve(Disposals,Q(code=int(outcome_data[19]))),'amount':outcome_data[3]})
+            outcome['disposals'].append({'disp':self.db_retrieve(Disposals,Q(code=int(outcome_data[20]))),'amount':outcome_data[4]})
         except Exception as e:
+            print e
             outcome['proceeding']['description'] = proceeding_code
+            outcome['disposals']=[]
+            outcome['disposals'].append({'disp':self.db_retrieve(Disposals,Q(code=int(outcome_data[17]))),'amount':outcome_data[1]})
+            outcome['disposals'].append({'disp':self.db_retrieve(Disposals,Q(code=int(outcome_data[18]))),'amount':outcome_data[2]})
+            outcome['disposals'].append({'disp':self.db_retrieve(Disposals,Q(code=int(outcome_data[19]))),'amount':outcome_data[3]})
+            outcome['disposals'].append({'disp':self.db_retrieve(Disposals,Q(code=int(outcome_data[20]))),'amount':outcome_data[4]})
         finally:
             return outcome
 
@@ -130,11 +149,6 @@ class OutcomeView(generic.View):
                 'amount2': outcome_data[2],
                 'amount3': outcome_data[3],
                 'amount4': outcome_data[4],
-                'proc': outcome_data[16],
-                'disp1': outcome_data[17],
-                'disp2': outcome_data[18],
-                'disp3': outcome_data[19],
-                'disp4': outcome_data[20],
                 'clastype': outcome_data[21],
                 'priority': outcome_data[22],
                 'guilty': outcome_data[23],
