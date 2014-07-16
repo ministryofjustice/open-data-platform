@@ -35,8 +35,10 @@ class OutcomeView(generic.View):
             offences = Offences.objects.using('outcomes').filter(lookup=outcome_data[14]);
             if len(offences) > 1:
                 offence['description'] = 'n/a'
+                offence['act'] = 'n/a'
             else:
-                offence['description'] = offences[0].act
+                offence['description'] = offences[0].description
+                offence['act'] = offences[0].act
         except Exception as e:
             print e
             offence['group'] = outcome_data[6]

@@ -20,7 +20,7 @@
     <li>Defendant:
       <ul>
         <li>Number of defendants: {{ outcome.defendant.number }}</li>
-        <li>Age: {{ outcome.defendant.age }} years old. (Age is defaulted to 25 if date of birth information is not recorded.)</li>
+        <li>Age<sup><a href="#age-note">1</a></sup>: {{ outcome.defendant.age }}</li>
         <li>Sex: {{ outcome.defendant.sex }}</li>
         <li>Ethnicity: {{ outcome.defendant.ethnicity }}</li>
       </ul>
@@ -31,7 +31,8 @@
     <li>Offence:
       <ul>
         <li>Group: {{ outcome.offence.group }}</li>
-        <li>Description: {{ outcome.offence.description }}</li>
+        <li>Description<sup><a href="#offence-desc-note">2</a></sup>: {{ outcome.offence.description }}</li>
+        <li>Act: {{ outcome.offence.act }}</li>
       </ul>
     </li>
     <li>Plea: {{ outcome.plea }}</li>
@@ -41,6 +42,10 @@
       </ul>
     </li>
   </ul>
+
+  <h2>Notes</h2>
+  <p id="age-note">(1) Age is defaulted to 25 if date of birth information is not recorded.)</p>
+  <p id="offence-desc-note">(2) "n/a" means that either the information is not recorded, or is not specific.</p>
 
   {% else %}
   <p>This CSV line doesn't correspond to a valid outcome</p>
