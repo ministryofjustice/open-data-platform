@@ -1,36 +1,36 @@
 Code,Court,Age,Disposal,Legislation,Comments,Type
 15,C,Under 18,Detained,SS.90 & 92(1) Powers of Criminal Courts (Sentencing) Act 2000,Add disposal 695 (life sentence tariff),custodial sentence
 20,C,18 to 20,Custody for life,SS.93 & 94(1) Powers of Criminal Courts (Sentencing) Act 2000,Add disposal 695 (life sentence tariff),custodial sentence
-22,C,21 and over,Life sentence for second listed offence,"S.224A Criminal Justice Act 2003. Inserted by Legal Aid,Sentencing and Punishment of Offenders Act 2012",,custodial sentence
+22,C,21 and over,Life sentence for second listed offence,"S.224A Criminal Justice Act 2003. Inserted by Legal Aid, Sentencing and Punishment of Offenders Act 2012",,custodial sentence
 23,C,21 and over,Mandatory life sentences for second serious offence,S.109 Powers of Criminal Courts (Sentencing) Act 2000,,custodial sentence
 24,C,18 and over,Imprisonment for public protection,S. 225 Criminal Justice Act 2003,Show minimum term of custody. EP should read INIMP,custodial sentence
-25,M & C,21 and over,Imprisonment without option of fine - effective* (including consecutive sentence),,"Show length of sentence in years,months,weeks or days. If 1 day use Disposal 110 for Magistrates' Courts and 350 for Crown Courts",custodial sentence
+25,M & C,21 and over,Imprisonment without option of fine - effective* (including consecutive sentence),,"Show length of sentence in years, months, weeks or days. If 1 day use Disposal 110 for Magistrates' Courts and 350 for Crown Courts",custodial sentence
 26,C,21 and over,Min. 7 years for third class A drug trafficking offence (S.110); min. 3 years for third domestic burglary (S.111),SS.110 & 111 Powers of Criminal Courts (Sentencing) Act 2000,,custodial sentence
 27,C,18 and over,Custodial term of sentence with extended licence for sexual or violent offenders,S.227 Criminal Justice Act 2003,Show length of custodial term in years or months. EP should show CUSTEX or DOF. Enter disposal 210 as the 2nd disposal and record the length of the extended licence period,custodial sentence
-28,C,18 and over,Extended Determinate Sentence (discretionary release),"S.226A Criminal Justice Act 2003. Inserted by Legal Aid,Sentencing and Punishment of Offenders Act 2012",Show length of custodial term in years or months. Enter disposal 210 as the 2nd disposal and record the length of the extended licence period,custodial sentence
-29,C,18 and over,"Extended Determinate Sentence (automatic release)","S.226A Criminal Justice Act 2003. Inserted by Legal Aid,Sentencing and Punishment of Offenders Act 2012",Show length of custodial term in years or months. Enter disposal 210 as the 2nd disposal and record the length of the extended licence period,custodial sentence
+28,C,18 and over,Extended Determinate Sentence (discretionary release),"S.226A Criminal Justice Act 2003. Inserted by Legal Aid, Sentencing and Punishment of Offenders Act 2012",Show length of custodial term in years or months. Enter disposal 210 as the 2nd disposal and record the length of the extended licence period,custodial sentence
+29,C,18 and over,"Extended Determinate Sentence (automatic release)","S.226A Criminal Justice Act 2003. Inserted by Legal Aid, Sentencing and Punishment of Offenders Act 2012",Show length of custodial term in years or months. Enter disposal 210 as the 2nd disposal and record the length of the extended licence period,custodial sentence
 31,C,18 to 20,Mandatory life sentences for second serious offence,S.109 Powers of Criminal Courts (Sentencing) Act 2000,Add disposal 695 (life sentence tariff),custodial sentence
-32,C,Under 21,"Life sentence for second listed offence","S.224A Criminal Justice Act 2003. inserted by Legal Aid,Sentencing and Punishment of Offenders Act 2012",,custodial sentence
+32,C,Under 21,"Life sentence for second listed offence","S.224A Criminal Justice Act 2003. inserted by Legal Aid, Sentencing and Punishment of Offenders Act 2012",,custodial sentence
 33,C,18 to 20,Min.7 years for third class A drug trafficking offence (S.110); min. of 3 years for third domestic burglary (S.111),SS.110 and 111 Powers of Criminal Courts (Sentencing) Act 2000,,custodial sentence
 34,C,Under 18,Imprisonment for public protection,S.226 Criminal Justice Act 2003,Show minimum term of custody. EP should read INIMP,custodial sentence
-35,M & C,21 and over,Imprisonment without option of fine - non-effective/concurrent*,,"Show length of sentence in years,months,weeks or days",custodial sentence
+35,M & C,21 and over,Imprisonment without option of fine - non-effective/concurrent*,,"Show length of sentence in years, months, weeks or days",custodial sentence
 37,C,Under 18,Extended Public Protection Sentence - Custody with extended licence for sexual or violent offenders,S.228 Criminal Justice Act 2003,Show length of custodial term in years or months. EP should show CUSTEX or DOF. Enter disposal 210 as the 2nd disposal and record the length of the extended licence period,custodial sentence
-38,C,Under 18,"Extended Determinate Sentence (discretionary release)","S.226B Criminal Justice Act 2003. Inserted by Legal Aid,Sentencing and Punishment of Offenders Act 2012",Show length of custodial term in years or months. Enter disposal 210 as the 2nd disposal and record the length of the extended licence period,custodial sentence
-39,C,Under 18,"Extended Determinate Sentence (automatic release)","S.226B Criminal Justice Act 2003. Inserted by Legal Aid,Sentencing and Punishment of Offenders Act 2012",Show length of custodial term in years or months. Enter disposal 210 as the 2nd disposal and record the length of the extended licence period,custodial sentence
-45,C,,Detained,SS.91(1) & 92(3) Powers of Criminal Courts (Sentencing) Act 2000,"Show length of sentence in years,months,weeks or days",custodial sentence
+38,C,Under 18,"Extended Determinate Sentence (discretionary release)","S.226B Criminal Justice Act 2003. Inserted by Legal Aid, entencing and Punishment of Offenders Act 2012",Show length of custodial term in years or months. Enter disposal 210 as the 2nd disposal and record the length of the extended licence period,custodial sentence
+39,C,Under 18,"Extended Determinate Sentence (automatic release)","S.226B Criminal Justice Act 2003. Inserted by Legal Aid, entencing and Punishment of Offenders Act 2012",Show length of custodial term in years or months. Enter disposal 210 as the 2nd disposal and record the length of the extended licence period,custodial sentence
+45,C,,Detained,SS.91(1) & 92(3) Powers of Criminal Courts (Sentencing) Act 2000,"Show length of sentence in years, months, weeks or days",custodial sentence
 50,C,,Restriction Order,S.41 Mental Health Act 1983,,custodial sentence
 60,M & C,21 and over,Suspended sentence of imprisonment (Custody minus) - effective/consecutive: min.14 weeks; max.12 months,S.189 Criminal Justice Act 2003,Show length of custodial sentence in weeks or months. Enter disposal 208 as the 2nd disposal and record the licence period,suspended sentence order
 61,M & C,18 to 20,Suspended sentence of imprisonment (Custody minus) - effective/consecutive: min.14 weeks; max.12 months,S.189 Criminal Justice Act 2003,Show length of custodial sentence in weeks or months. Enter disposal 208 as the 2nd disposal and record the licence period,suspended sentence order
 62,M & C,21 and over,Suspended sentence of imprisonment (Custody minus) - non-effective/concurrent: aggregate max. 65 weeks,S.189 Criminal Justice Act 2003,Show length of custodial sentence in weeks or months. Enter disposal 208 as the 2nd disposal and record the licence period,suspended sentence order
 63,M & C,18 to 20,Suspended sentence of imprisonment (Custody minus) - non-effective/concurrent: aggregate max. 65 weeks,S.189 Criminal Justice Act 2003,Show length of custodial sentence in weeks or months. Enter disposal 208 as the 2nd disposal and record the licence period,suspended sentence order
-70,M & C,,Suspended sentence of imprisonment,,"Show length of prison sentence in years,months,weeks or days",suspended sentence order
-85,M & C,18 to 20,Detention/Imprisonment - effective/consecutive*,,"Show length of sentence in years,months,weeks or days. Not to be used for a life sentence",Detention of Youths and Young Offenders
-90,M & C,18 to 20,Detention/Imprisonment - non-effective/concurrent*,,"Show length of sentence in years,months,weeks or days",Detention of Youths and Young Offenders
+70,M & C,,Suspended sentence of imprisonment,,"Show length of prison sentence in years, months, weeks or days",suspended sentence order
+85,M & C,18 to 20,Detention/Imprisonment - effective/consecutive*,,"Show length of sentence in years, months, weeks or days. Not to be used for a life sentence",Detention of Youths and Young Offenders
+90,M & C,18 to 20,Detention/Imprisonment - non-effective/concurrent*,,"Show length of sentence in years, months, weeks or days",Detention of Youths and Young Offenders
 100,M & C,Under 18,Detention and Training Orders - effective/consecutive,S.100 Powers of Criminal Courts (Sentencing) Act 2000,"Show length of order in months (4,6,8,10,12,18 or 24)",Detention of Youths and Young Offenders
 105,M & C,Under 18,Detention & Training Orders - non-effective/concurrent,S.100 Powers of Criminal Courts (Sentencing) Act 2000,"Show length of order in months (4,6,8,10,12,18 or 24)",Detention of Youths and Young Offenders
 110,M,,Police Cells,S.135 Magistrates' Courts Act 1980,One day - leave amount and units blank. See disposal 350 if one day's Crown Court cells. Do not use if disposal given is a fine served by one day in detention (use 315),Other Detention
-165,M & C,,Community Punishment Order within Community Punishment and Rehabilitation Order,S.51 Powers of Criminal Courts (Sentencing) Act 2000,"Show length of CPO sentence in hours - minimum total 40 hours,maximum 100 hours. Also include the additional appropriate CRO code with the length of sentence in months/years.",Community Punishment Orders
-170,M & C,,Community Punishment Order not within Community Punishment and Rehabilitation Order,S.46 Powers of Criminal Courts (Sentencing) Act 2000,"Show length of sentence in hours - minimum total 40 hours,maximum 240 hours",Community Punishment Orders
+165,M & C,,Community Punishment Order within Community Punishment and Rehabilitation Order,S.51 Powers of Criminal Courts (Sentencing) Act 2000,"Show length of CPO sentence in hours - minimum total 40 hours, maximum 100 hours. Also include the additional appropriate CRO code with the length of sentence in months/years.",Community Punishment Orders
+170,M & C,,Community Punishment Order not within Community Punishment and Rehabilitation Order,S.46 Powers of Criminal Courts (Sentencing) Act 2000,"Show length of sentence in hours - minimum total 40 hours, maximum 240 hours",Community Punishment Orders
 171,M & C,,Generic Community Sentence,SS.177 and 199 - 222 Criminal Justice Act 2003,Show length of order or hours of service,Community Orders
 175,M & C,,Curfew Order with electronic monitoring,S.38 Powers of Criminal Courts (Sentencing) Act 2000,Show length of order and hours per week,Community Orders
 177,M & C,,Curfew Order without electronic monitoring,S.37 Powers of Criminal Courts (Sentencing) Act 2000,Show length of order and hours per week,Community Orders
@@ -68,7 +68,7 @@ Code,Court,Age,Disposal,Legislation,Comments,Type
 310,M & Y,,Revocation of Referral Order,S.28 & Sch.1 Para.5 Powers of Criminal Courts (Sentencing) Act 2000,,Other sentence following a finding of guilt
 312,C,18 and over,Disqualification Order (from working with children) - Adults,S.28 Criminal Justice and Court Services Act 2000,,Other sentence following a finding of guilt
 313,C,Under 18,Disqualification Order (from working with children) - Juveniles,S.29 Criminal Justice and Court Services Act 2000,,Other sentence following a finding of guilt
-315,M & C,,"Fine,alone or with some other penalty",,Show the amount,Other sentence following a finding of guilt
+315,M & C,,"Fine, alone or with some other penalty",,Show the amount,Other sentence following a finding of guilt
 316,M & C,,Victim surcharge,The Criminal Justice Act 2003 (Surcharge) Order 2012,,Other sentence following a finding of guilt
 317,M & C,,Anti-Social Behaviour Order (ASBO) (on conviction),S.64 Police Reform Act 2002,Must not be disposal 1 or only disposal,Other sentence following a finding of guilt
 318,M & C,,Interim Anti-Social Behaviour Order,S.64 Police Reform Act 2002,Must not be disposal 1 or only disposal,Other sentence following a finding of guilt
@@ -79,11 +79,11 @@ Code,Court,Age,Disposal,Legislation,Comments,Type
 328,C,,Serious Crime Prevention Order,S.19 Serious Crime Act 2007,,Other sentence following a finding of guilt
 330,C,,Bound over at the Crown Court to come up for judgement if called upon,,,Other sentence following a finding of guilt
 340,M & C,,Bindover on conviction (See disposal 920 when no conviction recorded),,Leave amount/duration and units blank,Other sentence following a finding of guilt
-343,M & C,,"Football Banning Order - Football Spectators Act 1989 SS.14A,14B,21B & 22",,Show length of order (2 to 10 years),Other sentence following a finding of guilt
+343,M & C,,"Football Banning Order - Football Spectators Act 1989 SS.14A, 14B, 21B & 22",,Show length of order (2 to 10 years),Other sentence following a finding of guilt
 350,C,,One day's Crown Court Cells,,Only applies at the Crown Court - see disposal 110 for magistrates' court,Other sentence following a finding of guilt
 355,C,,Travel Restriction Order (drug trafficking offence - sentence of 4 years or more),S.33 Criminal Justice and Police Act 2001,,Other sentence following a finding of guilt
 360,M & C,,Absolute Discharge,,,Discharged without a punishment following a finding of guilt
-415,M,,Committal to Crown Court for sentence,"SS.3,4,6 & 7 Powers of Criminal Courts (Sentencing) Act 2000; S.5 Vagrancy Act 1824; S.70 Proceeds of Crime Act 2002.",,Committal to Crown Court for sentence (Lower Court document)
+415,M,,Committal to Crown Court for sentence,"SS.3, 4, 6 & 7 Powers of Criminal Courts (Sentencing) Act 2000; S.5 Vagrancy Act 1824; S.70 Proceeds of Crime Act 2002.",,Committal to Crown Court for sentence (Lower Court document)
 420,M,,Committal to Crown Court in custody for Restriction Order - custody,S.43 Mental Health Act 1983,,Committal to Crown Court for sentence (Lower Court document)
 425,M,,Committal to Crown Court in hospital for Restriction Order - hospital,SS.43 and 44 Mental Health Act 1983,,Committal to Crown Court for sentence (Lower Court document)
 460,M & C,,Hospital Order,S.37(1) Mental Health Act 1983,,Hospital or Guardianship Order - with conviction
@@ -91,7 +91,7 @@ Code,Court,Age,Disposal,Legislation,Comments,Type
 480,C,,Hospital and Limitation Directions,S.45A Mental Health Act 1983,,Hospital or Guardianship Order - with conviction
 520,M & C,,Recommendation for deportation,,,Other Sentence
 530,M & C,,Compensation,,Show the amount of compensation,Other Sentence
-535,M,,"Local Authority to pay fine,compensation or costs",S.137(8) Powers of Criminal Courts (Sentencing) Act 2000,Leave amount/duration and units blank,Other Sentence
+535,M,,"Local Authority to pay fine, compensation or costs",S.137(8) Powers of Criminal Courts (Sentencing) Act 2000,Leave amount/duration and units blank,Other Sentence
 540,M & C,,Parents to pay fine or compensation or costs,,Leave amount/duration and units blank. Must not be disposal 1,Other Sentence
 545,M & C,,Parenting Order given in a Criminal Court (not Civil Court Parenting Orders),S.8 Crime and Disorder Act 1998,Must not be disposal 1,Other Sentence
 550,M & C,,Parents bound over,,Must not be disposal 1. Leave amount/duration and units blank,Other Sentence
@@ -101,8 +101,8 @@ Code,Court,Age,Disposal,Legislation,Comments,Type
 590,M & C,,Order for forfeiture of property used or intended for use for purposes of committing an offence,,Follow with disposal 600 if only disposal,Other Sentence
 595,M & C,,Order for forfeiture of vehicle/ship/aircraft used for the purpose of committing an offence,,Follow with disposal 600 if only disposal,Other Sentence
 600,M & C,,Not separately dealt with,,,Other Sentence
-630,M & C,,"Suspended sentence of imprisonment (disposal code 70,proceedings 61) - court varies the requirements or duration",S.119(1)(c) & (d) Powers of Criminal Courts (Sentencing) Act 2000,Leave amount/duration and units blank,Other Sentence
-640,M & C,,"Suspended sentence of imprisonment (disposal codes 60,61,62 or 63,disposal 66) or Generic Community Order",S.193 & Sch.12 and S.17 & Sch.8 Criminal Justice Act 2003,Court varies the requirements of suspension or decides to make no order. Leave amount/duration and units blank,Other Sentence
+630,M & C,,"Suspended sentence of imprisonment (disposal code 70, proceedings 61) - court varies the requirements or duration",S.119(1)(c) & (d) Powers of Criminal Courts (Sentencing) Act 2000,Leave amount/duration and units blank,Other Sentence
+640,M & C,,"Suspended sentence of imprisonment (disposal codes 60, 61, 62 or 63, disposal 66) or Generic Community Order",S.193 & Sch.12 and S.17 & Sch.8 Criminal Justice Act 2003,Court varies the requirements of suspension or decides to make no order. Leave amount/duration and units blank,Other Sentence
 650,C,21 and over,Supervision Order imposed at the same time as a suspended sentence,S.122 Powers of Criminal Courts (Sentencing) Act 2000,Show the length of the order - minimum length of sentence 181 days. Must not be disposal 1,Other Sentence
 655,C,,Suspended sentence of imprisonment - Supervision Order continues with same or altered duration,,,Other Sentence
 660,M & C,,Restraining Order,S.5 Protection from Harassment Act 1997,Leave amount/duration and units blank,Other Sentence
@@ -127,24 +127,24 @@ Code,Court,Age,Disposal,Legislation,Comments,Type
 785,C,,Not guilty by reason of insanity,S.5 Criminal Procedure (Insanity) Act 1964 - amended by S.3 Criminal Procedure (Insanity and Unfitness to Plead) Act 1991,Used in all cases where a verdict of not guilty by reason of insanity - irrespective of disposal,Defendant unfit through mental illness to stand trial at Crown Court
 790,C,,Not tried at Crown Court - certified insane before arraignment,,,Defendant unfit through mental illness to stand trial at Crown Court
 800,Y & C,,Restraining Order,S.5A Sex Offenders Act 1997,For unconvicted defendants unfit for trial as a second disposal,Sex Offender Orders
-802,M & C,,Sexual Offences Prevention Order (SOPO),SS.104 & 106 Sexual Offences Act 2003,"For unconvicted defendants as a second disposal after 750,770,780 or 785. This disposal is a civil preventative order",Sex Offender Orders
+802,M & C,,Sexual Offences Prevention Order (SOPO),SS.104 & 106 Sexual Offences Act 2003,"For unconvicted defendants as a second disposal after 750, 770, 780 or 785. This disposal is a civil preventative order",Sex Offender Orders
 810,C,,CC only - Acquitted/not guilty/no evidence offered/not proceeded against/charge withdrawn,,,Acquitted or dismissed
 812,C,,CC only - Guilty plea to lesser/alternative offence accepted by court,,,Acquitted or dismissed
 814,C,,CC only - Not guilty but guilty to lesser/alternative offence,,,Acquitted or dismissed
 820,M,,MC only - Not guilty - information dismissed,S.9 Magistrates' Courts Act 1980,,Acquitted or dismissed
-830,C,,"Jury discharged from giving verdict,having reached a verdict on another count",,,Acquitted or dismissed
+830,C,,"Jury discharged from giving verdict, having reached a verdict on another count",,,Acquitted or dismissed
 840,C,,Judge rules no case to answer,,,Acquitted or dismissed
 860,M,,MC only - No evidence offered/not proceeded against/charge withdrawn,S.6 Magistrates' Courts Act 1980,TEW (summary) & Summary offences only - not for offences tried on indictment. Use 880 for offences tried on indictment,Acquitted or dismissed
 880,M,,Discharged or dismissed,S.6 Magistrates' Courts Act 1980,TEW (indictable) & IND offences only - not for offences tried summarily. Use 860 for offences tried summarily,Acquitted or dismissed
 910,M,,Discontinuance of proceedings,S.23(3) Prosecution of Offences Act 1985,,Other results when no finding of guilt is recorded
-920,M & C,,"Bindover order imposed,no conviction recorded",,Not disposal 1 except with offence code 501/00 - follw with disposal 860,Other results when no finding of guilt is recorded
+920,M & C,,"Bindover order imposed, no conviction recorded",,Not disposal 1 except with offence code 501/00 - follw with disposal 860,Other results when no finding of guilt is recorded
 923,C,,Restraining Order (on acquittal),S.5A Protection from Harassment Act 1997,,Other results when no finding of guilt is recorded
 925,M & C,,SOPO (Sexual Offences Prevention Order) imposed following application by police,SS.104(5) & 106 Sexual Offences Act 2003,,Other results when no finding of guilt is recorded
 926,M,,Risk of Sexual Harm Order (RSHO) imposed following application by police,S.123 Sexual Offences Act 2003,These disposals are civil preventative orders,Other results when no finding of guilt is recorded
 927,M,,Interim Risk of Sexual Harm Order (IRSHO) imposed following application by police,S.126 Sexual Offences Act 2003,These disposals are civil preventative orders,Other results when no finding of guilt is recorded
 928,M & C,,Interim SOPO (Sexual Offences Prevention Order) imposed following application by police,S.109 Sexual Offences Act 2003,These disposals are civil preventative orders,Other results when no finding of guilt is recorded
 930,C,,CC only - Count ordered to remain on file and not to be proceeded with without leave of court,,,Other results when no finding of guilt is recorded
-932,M & C,,"Community requirements for 060,062,171,181,182 & 183"," SS.177,181,183,189 &  199-222 Criminal Justice Act 2003","Use as 3rd disposal with 60,61,62 and 63 and 2nd disposal with 171 and 181",Community requirements
+932,M & C,,"Community requirements for 060, 062, 171, 181, 182 & 183"," SS.177, 181, 183, 189 &  199-222 Criminal Justice Act 2003","Use as 3rd disposal with 60, 61, 62 and 63 and 2nd disposal with 171 and 181",Community requirements
 935,M,,"Case adjourned 'sine die'",,,Other results when no finding of guilt is recorded (continued)
 945,M & C,,Died before charge disposed of or before arraignment,,,Other results when no finding of guilt is recorded (continued)
 950,M & C,,Committed suicide before charge disposed of or before arraignment,,,Other results when no finding of guilt is recorded (continued)
