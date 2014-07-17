@@ -11,6 +11,14 @@ from __future__ import unicode_literals
 
 from django.db import models
 
+class Guilty(models.Model):
+    code = models.IntegerField(primary_key=True)
+    description = models.CharField(max_length=255, blank=True)
+    class Meta:
+        managed = False
+        db_table = 'guilty'
+
+
 class Proceedings(models.Model):
     code = models.IntegerField(blank=True, null=True)
     court = models.CharField(max_length=10, blank=True)
@@ -38,6 +46,20 @@ class Crttype(models.Model):
     class Meta:
         managed = False
         db_table = 'crttype'
+
+class Result(models.Model):
+    code = models.IntegerField(primary_key=True)
+    description = models.CharField(max_length=255, blank=True)
+    class Meta:
+        managed = False
+        db_table = 'result'
+
+class Sent(models.Model):
+    code = models.IntegerField(primary_key=True)
+    description = models.CharField(max_length=255, blank=True)
+    class Meta:
+        managed = False
+        db_table = 'sent'
 
 class Ofgroup(models.Model):
     code = models.CharField(primary_key=True, max_length=10)
@@ -71,6 +93,13 @@ class Disposals(models.Model):
     class Meta:
         managed = False
         db_table = 'disposals'
+
+class Clastype(models.Model):
+    code = models.IntegerField(primary_key=True)
+    description = models.CharField(max_length=255, blank=True)
+    class Meta:
+        managed = False
+        db_table = 'clastype'
 
 class Offences(models.Model):
     lookup = models.IntegerField()

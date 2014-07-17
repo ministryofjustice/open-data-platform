@@ -30,14 +30,21 @@
     <li>Police Force: {{ outcome.police.force }} {% if outcome.police.region %} ({{outcome.police.region}}) {% endif %}</li>
     <li>Offence:
       <ul>
+        <li>Type: {{ outcome.offence.type }}</li>
         <li>Group: {{ outcome.offence.group }}</li>
         <li>Description<sup><a href="#offence-desc-note">2</a></sup>: {{ outcome.offence.description }}</li>
         <li>Act: {{ outcome.offence.act }}</li>
       </ul>
     </li>
+
     <li>Plea: {{ outcome.plea }}</li>
+
     <li>Outcome:
       <ul>
+        <li>{{ outcome.outcome.guilty }}<sup><a href="#guilty-note">3</a></sup></li>
+        {% if outcome.outcome.guilty %}
+        <li>{{ outcome.outcome.sent }}<sup><a href="#sent-note">4</a></sup>: {{ outcome.outcome.result }}</li>
+        {% endif %}
         <li>Proceeding: {{ outcome.outcome.proceeding.description }}</li>
         <li>Disposals:
           <ul>
@@ -59,7 +66,8 @@
   <h2>Notes</h2>
   <p id="age-note">(1) Age is defaulted to 25 if date of birth information is not recorded.)</p>
   <p id="offence-desc-note">(2) "n/a" means that either the information is not recorded, or is not specific.</p>
-
+  <p id="guilty-note">(3) Refers to whether a finding of guilt was made at that court appearance. For example, for an individual convicted at the magistrates’ court, but sent for sentence at the Crown Court, there would be a 0 in the guilty field for the Crown Court record.</p>
+  <p id="sent-note">(4) Refers to whether a sentence was given at that court appearance. For example, for an individual convicted at the magistrates’ court, but sent for sentence at the Crown Court, there would be a 0 in the sentence field for the magistrates record.</p>
   {% else %}
   <p>This CSV line doesn't correspond to a valid outcome</p>
   {% endif %}

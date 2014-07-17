@@ -5,11 +5,21 @@ from django.shortcuts import render, redirect
 from django.template import RequestContext, loader
 from django.utils import timezone
 from django.views import generic
-from home.models import Outcomes, Crttype, Courts, Ofgroup, Sex, Ethcode, PoliceForces, Pleas, Proceedings, Offences, Disposals
+from home.models import Outcomes, Crttype, Courts, Ofgroup, Sex, Ethcode, PoliceForces, Pleas, Proceedings, Offences, Disposals, Clastype, Guilty, Result, Sent
 from feedback.models import Feedback
 import string, re
 
 class OutcomeView(generic.View):
+
+    def db_retrieve(self, object_type, query, default=None):
+        try:
+            result = object_type.objects.using('outcomes').filter(query)[0]
+        except Exception as e:
+            print "going to default"
+            print e
+            result = default
+        finally:
+            return result
 
     def court_info(self, outcome_data):
         court = {}
@@ -30,6 +40,7 @@ class OutcomeView(generic.View):
 
     def offence_info(self, outcome_data):
         offence = {}
+        offence['type'] = self.db_retrieve(Clastype, Q(code=outcome_data[21]), {'description':'n/a'}).description;
         try:
             offence['group'] = Ofgroup.objects.using('outcomes').get(code=outcome_data[6]).description
             offences = Offences.objects.using('outcomes').filter(lookup=outcome_data[14])
@@ -57,19 +68,14 @@ class OutcomeView(generic.View):
         finally:
             return defendant
 
-    def db_retrieve(self, object_type, query, default=None):
-        try:
-            result = object_type.objects.using('outcomes').filter(query)[0]
-        except Exception as e:
-            print "going to default"
-            print e
-            result = default
-        finally:
-            return result
 
     def outcome_info(self, outcome_data):
         proceeding_code = int(outcome_data[16])
         outcome = {'proceeding':{}, 'disposals':[], 'amounts':[]}
+        outcome['guilty'] = self.db_retrieve(Guilty, Q(code=outcome_data[23]), {'description':'n/a'}).description;
+        outcome['result'] = self.db_retrieve(Result, Q(code=outcome_data[25]), {'description':'n/a'}).description;
+        outcome['sent'] = self.db_retrieve(Sent, Q(code=outcome_data[24]), {'description':'n/a'}).description;
+
         try:
             if outcome_data[5] == 'MC':
                 query = Q(code=proceeding_code) & (Q(court='M') | Q(court='M & C'))
@@ -145,15 +151,7 @@ class OutcomeView(generic.View):
                 'plea': self.plea_info(outcome_data),
                 'outcome': self.outcome_info(outcome_data),
 
-                'amount1': outcome_data[1],
-                'amount2': outcome_data[2],
-                'amount3': outcome_data[3],
-                'amount4': outcome_data[4],
-                'clastype': outcome_data[21],
                 'priority': outcome_data[22],
-                'guilty': outcome_data[23],
-                'sent': outcome_data[24],
-                'result': outcome_data[25],
                 'offtyp': outcome_data[26],
                 'ofclas': outcome_data[27],
                 'notoff': outcome_data[28],
