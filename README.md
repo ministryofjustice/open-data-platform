@@ -76,6 +76,7 @@ If such a database is set up, its credentials should be set as:
 
 The database schema is pretty much self explanatory, but more details can be found in the way it's used in the code. See [models.py](tree/master/home/models.py) and [views.py](tree/master/home/views.py).
 
+
 Obtaining or building the outcomes database
 -------------------------------------------
 
