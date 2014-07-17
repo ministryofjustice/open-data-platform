@@ -74,7 +74,7 @@ If such a database is set up, its credentials should be set as:
     MOJOD_OUTCOMES_DB_URL=postgres://dbuser:dbpassword@localhost:port/dbname
 
 
-The database schema isn't complete at this point and will be documented as it stops fluctuating. The model file (apps/models.py) contains the current django model for the database.
+The database schema is pretty much self explanatory, but more details can be found in the way it's used in the code (see [models.py](tree/master/home/models.py) and [views.py](tree/master/home/views.py).
 
 Obtaining or building the outcomes database
 -------------------------------------------
@@ -87,6 +87,6 @@ Some of those CSV tables are available in [a static directory](tree/master/home/
     create table offences (lookup integer, act varchar(1024), section varchar(1024), description varchar(1024), magsmaxsentence varchar(255),magsclasstrial varchar(255),magsclassunder18 varchar(255),magsclassover18 varchar(255), crownmaxsentence varchar(255),crownclasstrial varchar(255),crownclassconvlower varchar(255),crimsec3 varchar(255),yearinsertcodebooks varchar(255), id integer PRIMARY KEY);
     \copy offences(lookup, act, section, description, magsmaxsentence, magsclasstrial, magsclassunder18, magsclassover18, crownmaxsentence, crownclasstrial, crownclassconvlower, crimsec3, yearinsertcodebooks) from '/tmp/offense-classifications.csv' delimiter ',' csv header
 
-We will release a full postgresql when the database is finished building.
+We will soon release a full postgresql dump.
 
 
